@@ -4,14 +4,14 @@ const Navbar = () => {
 
   return (
       <>
-        <div>
+        <div className="navbar-container">
             <a href="/">Home</a>
             <a href="/">Cryptocurrencies</a>
             <a href="/">Exchanges</a>
             <a href="/">News</a>
         </div>
       </>
-  )
+    )
 };
 
 export default Navbar
