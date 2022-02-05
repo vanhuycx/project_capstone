@@ -4,7 +4,7 @@ const Header = () => {
   return (
       <>
       <div className="header-container">
-            <img className="header-image" src={moon_icon} alt="" />
+            <img className="header-logo" src={moon_icon} alt="" />
             <p>CoinDex</p>
 
       </div>

@@ -12,27 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.app-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .app-logo {
-    animation: app-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes app-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* Header Style */
 
 .header-container {
@@ -42,9 +24,91 @@ code {
   background: linear-gradient(to bottom, #000099 0%, #0099ff 100%);
   color: white;
 }
-.header-image {
+.header-logo {
   width: 13vh;
   /* height: 100px; */
   margin-inline: 10px;
 }
-/* End of Header Style */
+
+/* Make the header logo spin */
+@media (prefers-reduced-motion: no-preference) {
+  .header-logo {
+    animation: header-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes header-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*NavBar Style */
+
+.navbar-container {
+  display: flex;
+  /* justify-content: space-evenly; */
+  justify-content: center;
+  background-color: #022730;
+}
+
+.navbar-container a {
+  /* display: flex; */
+  /* padding: 12px; */
+  padding: 10px 20px;
+  color: #dcf9f6;
+  font-size: 3vh;
+
+  /* no undescore */
+  text-decoration: none;
+}
+
+.navbar-container a:hover {
+  background-color: rgb(7, 122, 216);
+}
+
+/* Main content */
+
+.main {
+  font-size: 1vmax;
+  text-align: center;
+  margin: 2vmax 10vmax 2vmax 10vmax;
+}
+
+/* Footer */
+
+.footer a {
+  /* float: left; */
+  /* display: block; */
+  color: white;
+  /* text-align: left; */
+  padding: 14px 16px;
+  text-decoration: none;
+  /* font-size: 2vh; */
+}
+
+.footer {
+  margin-top: 0.75rem;
+  /* padding: 0.75rem; */
+  background-color: #022730;
+  color: white;
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh; */
+  font-size: 2vh;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+
+  /* align-content: center; */
+}
