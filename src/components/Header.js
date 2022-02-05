@@ -5,7 +5,7 @@ const Header = () => {
       <>
       <div className="header-container">
             <img className="header-image" src={moon_icon} alt="" />
-            <p> Website name</p>
+            <p>CoinDex</p>
 
       </div>
       
