@@ -84,6 +84,14 @@ code {
   background-color: rgb(7, 122, 216);
 }
 
+/* Responsive layout - when the screen is less than 700px wide, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .navbar-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 /* Main content */
 
 .main {
