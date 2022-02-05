@@ -15,21 +15,30 @@ code {
 * {
   box-sizing: border-box;
 }
+
+/* .app {
+  display: flex;
+} */
+
 /* Header Style */
 
 .header-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   font-size: 5vh;
   background: linear-gradient(to bottom, #000099 0%, #0099ff 100%);
   color: white;
 }
 .header-logo {
-  width: 13vh;
+  width: 10vh;
   /* height: 100px; */
   margin-inline: 10px;
 }
-
+.header-name {
+  padding-top: 2vmax;
+}
 /* Make the header logo spin */
 @media (prefers-reduced-motion: no-preference) {
   .header-logo {
@@ -50,23 +59,28 @@ code {
 
 .navbar-container {
   display: flex;
-  /* justify-content: space-evenly; */
   justify-content: center;
   background-color: #022730;
+  color: #dcf9f6;
+  font-size: 3vh;
+}
+
+.navbar-container > div {
+  padding: 0.5vmax 2vmax 0.5vmax 2vmax;
 }
 
 .navbar-container a {
   /* display: flex; */
   /* padding: 12px; */
-  padding: 10px 20px;
-  color: #dcf9f6;
-  font-size: 3vh;
+  /* padding: 10px 20px; */
 
   /* no undescore */
+  color: white;
   text-decoration: none;
 }
 
-.navbar-container a:hover {
+.navbar-container :hover {
+  color: white;
   background-color: rgb(7, 122, 216);
 }
 

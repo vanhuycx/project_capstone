@@ -4,8 +4,13 @@ const Header = () => {
   return (
       <>
       <div className="header-container">
+            <div>
             <img className="header-logo" src={moon_icon} alt="" />
-            <p>CoinDex</p>
+            </div>
+            <div className="header-name">
+            <p>CoinChain</p>
+            </div>
+            
 
       </div>
       
