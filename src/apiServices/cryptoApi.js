@@ -18,11 +18,16 @@ export const cryptoApiCoingecko = createApi({
         getCryptos: builder.query({
             query: ({page,per_page}) => createRequest(`/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}`),
         }),
+
+        getGlobalStats: builder.query({
+            query: () => createRequest(`/global`),
+        }),
     })
 })
 
 export const {
     useGetCryptosQuery,
+    useGetGlobalStatsQuery,
 } = cryptoApiCoingecko;
 
 
