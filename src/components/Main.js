@@ -2,9 +2,6 @@ import React from "react";
 // import {useGetGlobalStatsQuery} from '../apiServices/cryptoApi'
 
 const Main = () => {
-
-  
-
   return (
     <>
     <div>
