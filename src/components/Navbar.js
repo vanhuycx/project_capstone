@@ -15,15 +15,12 @@ const Navbar = () => {
             </div>         
         </div>
       
-        <div className="navbar-container">
-          
-      
+        <div className="navbar-container">     
           <a href="/"><HomeOutlined/> Home</a>
           <a href="/"><MoneyCollectOutlined/> Cryptocurrencies</a>
           <a href="/"><BulbOutlined/> Exchanges</a>
           <a href="/"><FundOutlined/> News</a>
-            
-
+          
         </div>
       </>
     )
