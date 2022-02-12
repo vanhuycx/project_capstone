@@ -18,10 +18,10 @@ const Navbar = () => {
         <div className="navbar-container">
           
       
-          <div><HomeOutlined/> <a href="/">Home</a></div>
-          <div><MoneyCollectOutlined/> <a href="/">Cryptocurrencies</a></div>
-          <div><BulbOutlined/> <a href="/">Exchanges</a></div>
-          <div><FundOutlined/> <a href="/">News</a></div>
+          <a href="/"><HomeOutlined/> Home</a>
+          <a href="/"><MoneyCollectOutlined/> Cryptocurrencies</a>
+          <a href="/"><BulbOutlined/> Exchanges</a>
+          <a href="/"><FundOutlined/> News</a>
             
 
         </div>

@@ -23,21 +23,19 @@ code {
 /* Header Style */
 
 .header-container {
+  padding: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 4vh;
-  background: linear-gradient(to bottom, #000099 0%, #0099ff 100%);
-  color: white;
+  font-size: 25px;
+  /* background: linear-gradient(to bottom, #000099 0%, #0099ff 100%); */
 }
 .header-logo {
-  width: 8vh;
+  width: 75px;
   margin-inline: 10px;
 }
-.header-name {
-  padding: 1vmax 1vmax 0 0;
-}
+
 /* Make the header logo spin */
 @media (prefers-reduced-motion: no-preference) {
   .header-logo {
@@ -56,29 +54,25 @@ code {
 
 /*NavBar Style */
 .navbar {
-  background-color: #f1f1f1;
+  color: black;
+  background-color: rgb(181, 243, 181);
 }
 
 .navbar-container {
   display: flex;
   flex-direction: column; /*  change here from row to column */
   justify-content: center;
-  /* background-color: #022730; */
-  color: black;
-  font-size: 2.25vh;
-}
-
-.navbar-container > div {
-  padding: 0.5vmax 2vmax 0.5vmax 2vmax;
+  font-size: 17px;
 }
 
 .navbar-container a {
+  padding: 12px;
   color: black;
   text-decoration: none;
 }
 
 .navbar-container :hover {
-  color: greenyellow;
+  color: yellow;
   background-color: rgb(7, 122, 216);
 }
 
@@ -89,7 +83,6 @@ code {
   }
   .navbar-container {
     flex-direction: row;
-    font-size: 2vmax;
   }
 }
 
@@ -97,11 +90,9 @@ code {
 
 .main {
   text-align: center;
-  /* margin: 2vmax 10vmax 2vmax 10vmax; */
 }
 
 /* Footer */
-
 .footer a {
   color: white;
   padding: 14px 16px;
@@ -109,7 +100,7 @@ code {
 }
 
 .footer {
-  margin-top: 0.75rem;
+  margin-top: 15px;
   background-color: #022730;
   color: white;
 }
@@ -117,7 +108,4 @@ code {
 .footer-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* align-content: space-between; */
 }
