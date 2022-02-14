@@ -78,7 +78,10 @@ code {
 }
 
 .menu-bars {
-  visibility: hidden;
+  display: none !important;
+  position: absolute !important;
+  right: 10px !important;
+  top: 25px !important;
 }
 
 /* Responsive layout - when the screen is less than 700px wide, make the columns stack on top of each other instead of next to each other */
@@ -86,16 +89,9 @@ code {
   .app {
     flex-direction: column;
   }
-  .navbar-container {
-    flex-direction: row;
-    /* display: none; */
-  }
+
   .menu-bars {
-    visibility: visible;
-    font-size: 25px;
-    position: absolute;
-    right: 0;
-    top: 50px;
+    display: block !important;
   }
 }
 
