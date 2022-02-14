@@ -77,6 +77,10 @@ code {
   background-color: rgb(7, 122, 216);
 }
 
+.menu-bars {
+  visibility: hidden;
+}
+
 /* Responsive layout - when the screen is less than 700px wide, make the columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
   .app {
@@ -84,6 +88,14 @@ code {
   }
   .navbar-container {
     flex-direction: row;
+    /* display: none; */
+  }
+  .menu-bars {
+    visibility: visible;
+    font-size: 25px;
+    position: absolute;
+    right: 0;
+    top: 50px;
   }
 }
 

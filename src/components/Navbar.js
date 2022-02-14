@@ -2,17 +2,19 @@ import React from "react";
 import {HomeOutlined, MoneyCollectOutlined, BulbOutlined,FundOutlined, MenuOutlined} from '@ant-design/icons'
 import moon_icon from '../moon_icon.svg'
 
+
 const Navbar = () => {
 
   return (
       <>
         <div className="header-container">
             <div>
-            <img className="header-logo" src={moon_icon} alt="" />
+              <img className="header-logo" src={moon_icon} alt="" />
             </div>
             <div className="header-name">
-            <p>CoinChain</p>
-            </div>         
+              CoinChain
+            </div>
+                     
         </div>
       
         <div className="navbar-container">     
@@ -22,6 +24,7 @@ const Navbar = () => {
           <a href="/"><FundOutlined/> News</a>
           
         </div>
+        <MenuOutlined className="menu-bars"/>
       </>
     )
 };
