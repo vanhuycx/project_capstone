@@ -13,9 +13,8 @@ const App = () => {
             </div>
 
             <div className="main">
-                <div className="main-container">
-                    <Main/>
-                </div>
+                <Main/>
+                
 
                 <div className="footer">
                     <Footer/>
