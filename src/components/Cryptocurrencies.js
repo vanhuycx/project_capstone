@@ -3,19 +3,7 @@ import React from 'react'
 const Cryptocurrencies = () => {
   return (<>
 
-<div>Cryptocurrencies</div>
-
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
-
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
-
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
-
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
-<p>duhawudhwaufdhwfiuhwauifhawudfhawuid</p>
+    <h1>This is the Cryptocurrencies page</h1>
   
   
   </>

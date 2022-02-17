@@ -2,7 +2,7 @@ import React from 'react'
 
 const CryptoDetail = () => {
   return (
-    <div>CryptoDetail</div>
+    <h1>This is the Crypto Detail page</h1>
   )
 }
 
