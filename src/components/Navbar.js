@@ -1,7 +1,7 @@
 import React from "react";
 import {HomeOutlined, MoneyCollectOutlined, BulbOutlined,FundOutlined, MenuOutlined} from '@ant-design/icons'
 import moon_icon from '../moon_icon.svg'
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -17,13 +17,11 @@ const Navbar = () => {
             </div>
                      
         </div>   
-
-
           <div className="navbar-container">     
-            <a href="/"><HomeOutlined/> Home</a>
-            <a href="/"><MoneyCollectOutlined/> Cryptocurrencies</a>
-            <a href="/"><BulbOutlined/> Exchanges</a>
-            <a href="/"><FundOutlined/> News</a>         
+            <Link to='/'><HomeOutlined/> Home</Link>
+            <Link to='/cryptocurrencies'><MoneyCollectOutlined/> Cryptocurrencies</Link>
+            <Link to='/exchanges'><BulbOutlined/> Exchanges</Link>
+            <Link to='/news'><FundOutlined/> News</Link>
           </div>
       
         

@@ -1,7 +1,7 @@
 import React from "react";
 // import {useGetGlobalStatsQuery} from '../apiServices/cryptoApi'
 
-const Main = () => {
+const HomePage = () => {
   // const {data:globalStats,isFetching} =  useGetGlobalStatsQuery()
   // console.log(globalStats)
 
@@ -40,4 +40,4 @@ Proin vitae facilisis nibh. Sed interdum eleifend turpis. Curabitur libero magna
 
 };
 
-export default Main;
+export default HomePage;
