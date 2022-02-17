@@ -8,7 +8,7 @@ const NotFound = () => {
     <>
 
     <div>
-        Sorry. We cannot find the page you want.br 
+        Sorry. We cannot find the page you want.
     </div>
 
     <Link to='/'>Home</Link>
