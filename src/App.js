@@ -20,25 +20,22 @@ const App = () => {
             </div>
 
             <div className="main">
-
+                <div className="main-content">
                     <Routes>
-                        <Route exact path='/' element={<HomePage/>} />
-                        <Route exact path='/exchanges' element={<Exchange/>} />
-                        <Route exact path='/news' element={<News/>} />
-                        <Route exact path='/cryptocurrencies' element={<Cryptocurrencies/>} />
-                        <Route exact path='/cryptoDetail/:cryptoId' element={<CryptoDetail/>} />
+                            <Route exact path='/' element={<HomePage/>} />
+                            <Route exact path='/exchanges' element={<Exchange/>} />
+                            <Route exact path='/news' element={<News/>} />
+                            <Route exact path='/cryptocurrencies' element={<Cryptocurrencies/>} />
+                            <Route exact path='/cryptoDetail/:cryptoId' element={<CryptoDetail/>} />
 
-                        <Route path='*' element={<NotFound/>}/>
-                    </Routes>
+                            <Route path='*' element={<NotFound/>}/>
+                        </Routes>
+                </div>
                 
                 <div className="footer">
                     <Footer/>
                 </div>
-
-
-
             </div>
-
         </div>
 
         </>

@@ -13,6 +13,7 @@ const HomePage = () => {
   return (
     <>
     <h1>This is the Home page</h1>
+    
     {/* <div>Market cap: {total_market_cap}</div> */}
     </>
 
