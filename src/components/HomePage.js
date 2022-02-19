@@ -1,43 +1,53 @@
 import React from "react";
-import {Typography,Card,List,Space} from 'antd'
+import {Typography,Card,List,Space,Statistic,Divider,Row,Col} from 'antd'
 import {useGetGlobalStatsQuery,useGetTrendingQuery} from '../apiServices/cryptoApi'
-
 import { Link } from "react-router-dom";
 
+
+
+const {Title} = Typography
+
 const HomePage = () => {
-  const {data:globalStats,isFetching} =  useGetGlobalStatsQuery({pollingInterval:300000})
-  console.log(globalStats)
+  const {data:stats,isFetching} =  useGetGlobalStatsQuery({pollingInterval:300000})
+  const globalStats = stats?.data
 
   const {data:trending} = useGetTrendingQuery({pollingInterval:36000000});
-
   const trendingCoins = trending?.coins
 
+  console.log(stats)
   console.log(trendingCoins)
 
   if (isFetching) return '...Loading'
 
-  
-  // const active_cryptocurrencies = globalStats?.data?.active_cryptocurrencies
-  // const total_market_cap = globalStats?.data?.market_cap
-  // const total_volume = globalStats?.data?.total_volume?.usd
-
-  const {Title} = Typography
-
   return (
     <>
-     <Title level={2}>
+      <Title level={2}>
         Global Crypto Stats
       </Title>
 
-      {/* <div>Market cap: {total_market_cap}</div> */}
+      <Space size={25} wrap={true} className="stats-container">
 
+        <Statistic title='Total Market Cap' prefix='$' value={globalStats?.total_market_cap?.usd.toLocaleString("en-US",{maximumFractionDigits: 2}) || 'No data'}/>
 
+        <Statistic title='24h Volume' prefix='$' value={globalStats?.total_volume?.usd.toLocaleString("en-US",{maximumFractionDigits: 2}) || 'No data'}/>
+
+        <Statistic title='Market Dominance ' value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
+
+        <Statistic title='Active Cryptocurrencies' value={globalStats?.active_cryptocurrencies || 'No data'}/>
+
+        <Statistic title='Market Cap Percentage 24h Change' suffix='%' value={globalStats?.market_cap_change_percentage_24h_usd?.toLocaleString() || 'No data'}/>
+
+        <Statistic title='Market ' value={globalStats?.markets || 'No data'}/>
+      </Space>
+       
+
+      <Divider/>
 
       <Title level={2}>
         Trending Coins
       </Title>
 
-      <List grid={{gutter:16,xs:1,sm:2,md:3,lg:4,xl:5,xxl:6}}
+      <List grid={{gutter:16,xs:2,sm:3,md:4,lg:5,xl:6,xxl:7}}
         dataSource={trendingCoins}
         renderItem={item => (
           <List.Item>
@@ -52,7 +62,9 @@ const HomePage = () => {
             
           </List.Item>
         )}
-        />
+      />
+
+      <Divider/>
 
 
 

@@ -108,6 +108,11 @@ code {
   padding: 20px;
 }
 
+.stats-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 /* Footer */
 .footer a {
   color: white;
