@@ -7,7 +7,7 @@ const cryptoApiHeaderCoingecko = {
     'x-rapidapi-key':  process.env.REACT_APP_RAPIDAPI_API_KEY,
 }
 
-const baseUrlCoingecko = 'https://coingecko.p.rapidapi.com';
+const baseUrlCoingecko = 'https://api.coingecko.com/api/v3';
 
 const createRequest = (url)=> ({url,headers:cryptoApiHeaderCoingecko});
 
@@ -20,7 +20,10 @@ export const cryptoApiCoingecko = createApi({
         // }),
 
         getGlobalStats: builder.query({
-            query: () => createRequest(`/global`),
+            query: () => ({url:'/global'}),
+        }),
+        getTrending: builder.query({
+            query: () => ({url:'/search/trending'}),
         }),
     })
 })
@@ -28,6 +31,7 @@ export const cryptoApiCoingecko = createApi({
 export const {
     useGetCryptosQuery,
     useGetGlobalStatsQuery,
+    useGetTrendingQuery,
 } = cryptoApiCoingecko;
 
 

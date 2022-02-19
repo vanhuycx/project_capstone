@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import {HomeOutlined, MoneyCollectOutlined, BulbOutlined,FundOutlined, MenuOutlined} from '@ant-design/icons'
-import { Button } from "antd";
+import { Button,Space } from "antd";
 import moon_icon from '../moon_icon.svg'
 import { Link } from "react-router-dom";
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -22,17 +22,16 @@ const Navbar = () => {
   return (
       <>
         <div className="header-container">
-            <div>
+          <Space>
               <img className="header-logo" src={moon_icon} alt="" />
-            </div>
+
             <div className="header-name">
-              CoinChain
-            </div>
-                     
+              Coin Chain
+            </div>   
+          </Space>
         </div>   
 
           {activeMenu&&
-
           <div className="navbar-container">     
             <Link to='/'><HomeOutlined/> Home</Link>
             <Link to='/cryptocurrencies'><MoneyCollectOutlined/> Cryptocurrencies</Link>
