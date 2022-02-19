@@ -104,6 +104,10 @@ code {
   text-align: center;
 }
 
+.main-content {
+  padding: 20px;
+}
+
 /* Footer */
 .footer a {
   color: white;
