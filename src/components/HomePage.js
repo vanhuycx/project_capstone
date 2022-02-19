@@ -15,7 +15,6 @@ const HomePage = () => {
   const trendingCoins = trending?.coins
 
   console.log(stats)
-  console.log(trendingCoins)
 
   if (isFetching) return '...Loading'
 
