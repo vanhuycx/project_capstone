@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography,Card,List,Space,Statistic,Divider,Row,Col} from 'antd'
+import {Typography,Card,List,Space,Statistic,Divider} from 'antd'
 import {useGetGlobalStatsQuery,useGetTrendingQuery} from '../apiServices/cryptoApi'
 import { Link } from "react-router-dom";
 
@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 const {Title} = Typography
 
 const HomePage = () => {
-  const {data:stats,isFetching} =  useGetGlobalStatsQuery({pollingInterval:300000})
+  const {data:stats,isFetching} =  useGetGlobalStatsQuery()
   const globalStats = stats?.data
 
-  const {data:trending} = useGetTrendingQuery({pollingInterval:36000000});
+  const {data:trending} = useGetTrendingQuery();
   const trendingCoins = trending?.coins
 
   console.log(stats)
