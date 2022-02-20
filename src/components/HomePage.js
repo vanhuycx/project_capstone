@@ -26,9 +26,9 @@ const HomePage = () => {
 
       <Space size={25} wrap={true} className="stats-container">
 
-        <Statistic title='Total Market Cap' prefix='$' value={globalStats?.total_market_cap?.usd.toLocaleString("en-US",{maximumFractionDigits: 2}) || 'No data'}/>
 
-        <Statistic title='Market Dominance ' value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
+        <Statistic title='Total Market Cap' value={globalStats?.total_market_cap?.usd || 'No data'}/>
+
        
       </Space>
        
