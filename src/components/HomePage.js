@@ -28,15 +28,8 @@ const HomePage = () => {
 
         <Statistic title='Total Market Cap' prefix='$' value={globalStats?.total_market_cap?.usd.toLocaleString("en-US",{maximumFractionDigits: 2}) || 'No data'}/>
 
-        <Statistic title='24h Volume' prefix='$' value={globalStats?.total_volume?.usd.toLocaleString("en-US",{maximumFractionDigits: 2}) || 'No data'}/>
-
         <Statistic title='Market Dominance ' value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
-
-        <Statistic title='Active Cryptocurrencies' value={globalStats?.active_cryptocurrencies || 'No data'}/>
-
-        <Statistic title='Market Cap Percentage 24h Change' suffix='%' value={globalStats?.market_cap_change_percentage_24h_usd?.toLocaleString() || 'No data'}/>
-
-        <Statistic title='Market ' value={globalStats?.markets || 'No data'}/>
+       
       </Space>
        
 
