@@ -14,7 +14,7 @@ const HomePage = () => {
   const {data:trending} = useGetTrendingQuery();
   const trendingCoins = trending?.coins
 
-  console.log(stats)
+  console.log(globalStats)
 
   if (isFetching) return '...Loading'
 
@@ -26,9 +26,10 @@ const HomePage = () => {
 
       <Space size={25} wrap={true} className="stats-container">
 
-
         <Statistic title='Total Market Cap' value={globalStats?.total_market_cap?.usd || 'No data'}/>
 
+        <Statistic title='Total 24h Volume' value={globalStats?.total_volume?.usd || 'No data'}/>
+ 
        
       </Space>
        

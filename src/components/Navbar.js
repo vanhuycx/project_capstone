@@ -3,6 +3,7 @@ import {HomeOutlined, MoneyCollectOutlined, BulbOutlined,FundOutlined, MenuOutli
 import { Button,Space } from "antd";
 import moon_icon from '../moon_icon.svg'
 import { Link } from "react-router-dom";
+
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
@@ -31,7 +32,7 @@ const Navbar = () => {
           </Space>
         </div>   
 
-          {activeMenu&&
+          {activeMenu &&
           <div className="navbar-container">     
             <Link to='/'><HomeOutlined/> Home</Link>
             <Link to='/cryptocurrencies'><MoneyCollectOutlined/> Cryptocurrencies</Link>
@@ -43,6 +44,8 @@ const Navbar = () => {
             <Button onClick={()=>setActiveMenu(!activeMenu)}>
               <MenuOutlined/>
             </Button>    
+
+            <button></button>
         </div>
       </>
     )
