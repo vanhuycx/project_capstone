@@ -44,8 +44,6 @@ const Navbar = () => {
             <Button onClick={()=>setActiveMenu(!activeMenu)}>
               <MenuOutlined/>
             </Button>    
-
-            <button></button>
         </div>
       </>
     )
