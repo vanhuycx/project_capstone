@@ -9,10 +9,6 @@ export const cryptoApiCoingecko = createApi({
     reducerPath: 'cryptoApiCoingecko',
     baseQuery: fetchBaseQuery({baseUrl:baseUrlCoingecko}),
     endpoints: (builder)=>({
-        // getCryptos: builder.query({
-        //     query: ({page,per_page}) => createRequest(`/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}`),
-        // }),
-
         getGlobalStats: builder.query({
             query: () => ({url:'/global'}),
         }),
@@ -30,6 +26,11 @@ export const {
 
 
 
+
+
+           // getCryptos: builder.query({
+        //     query: ({page,per_page}) => createRequest(`/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}`),
+        // }),
 
 
 

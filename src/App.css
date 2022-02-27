@@ -18,6 +18,8 @@ code {
 
 .app {
   display: flex; /*add display as flexbox*/
+
+  
   flex-direction: row;
 }
 
@@ -85,7 +87,7 @@ code {
   top: 25px !important;
 }
 
-/* Responsive layout - when the screen is less than 750px wide, make the columns stack on top of each other instead of next to each other */
+/* Responsive layout - when the screen is less than 750px wide, make the flexbox stack on top of each other */
 @media screen and (max-width: 750px) {
   .app {
     flex-direction: column;

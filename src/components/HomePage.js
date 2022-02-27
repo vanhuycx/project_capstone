@@ -32,7 +32,6 @@ const HomePage = () => {
 
         <Statistic title='Markets' value={globalStats?.markets || 'No data'}/>
  
-       
       </Space>
        
 
