@@ -3,7 +3,6 @@ import {HomeOutlined, MoneyCollectOutlined, BulbOutlined,FundOutlined, MenuOutli
 import { Button,Space,Dropdown } from "antd";
 import moon_icon from '../moon_icon.svg'
 import { Link } from "react-router-dom";
-
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
@@ -46,7 +45,7 @@ const Navbar = () => {
             ? menu 
             : 
             <Dropdown className="menu-bars" overlay={menu}>
-              <Button className="ant-dropdown-link">
+              <Button>
                 <MenuOutlined/>
               </Button>
             </Dropdown>

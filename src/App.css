@@ -64,8 +64,9 @@ code {
 .navbar-container {
   display: flex;
   flex-direction: column; /*  change here from row to column */
-  justify-content: center;
+  text-align: center;
   font-size: 15px;
+  background-color: rgb(181, 243, 181);
 }
 
 .navbar-container a {
@@ -75,8 +76,8 @@ code {
 }
 
 .navbar-container :hover {
-  color: yellow;
-  background-color: rgb(7, 122, 216);
+  color: black;
+  background-color: yellow;
 }
 
 .menu-bars {
