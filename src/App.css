@@ -19,7 +19,6 @@ code {
 .app {
   display: flex; /*add display as flexbox*/
 
-  
   flex-direction: row;
 }
 
@@ -95,6 +94,7 @@ code {
 
   .menu-bars {
     display: block !important;
+    /* background-color: yellow; */
   }
 }
 
