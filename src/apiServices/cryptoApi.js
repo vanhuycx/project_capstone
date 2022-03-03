@@ -5,15 +5,25 @@ import {createApi,fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 const baseUrlCoingecko = 'https://api.coingecko.com/api/v3';
 
+const headers = {
+    'key':'dawda',
+    'host':'dawawd'
+}
+
 export const cryptoApiCoingecko = createApi({
     reducerPath: 'cryptoApiCoingecko',
-    baseQuery: fetchBaseQuery({baseUrl:baseUrlCoingecko}),
+    baseQuery: fetchBaseQuery({baseUrl:baseUrlCoingecko,prepareHeaders:(headers)=> {
+        headers.set('host','dhawudawd')
+        headers.set('key','dhawudawd')
+        return headers
+
+    }}),
     endpoints: (builder)=>({
         getGlobalStats: builder.query({
             query: () => ({url:'/global'}),
         }),
         getTrending: builder.query({
-            query: () => ({url:'/search/trending'}),
+            query: () => ({url:'/search/trending',headers}),
         }),
     })
 })

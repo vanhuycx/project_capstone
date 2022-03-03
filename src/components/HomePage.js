@@ -31,6 +31,8 @@ const HomePage = () => {
         <Statistic title='Total 24h Volume' value={globalStats?.total_volume?.usd || 'No data'}/>
 
         <Statistic title='Markets' value={globalStats?.markets || 'No data'}/>
+
+        <Statistic title='Dominance' value={'BTC: ' + globalStats?.markets || 'No data'}/>
  
       </Space>
        
