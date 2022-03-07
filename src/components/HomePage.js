@@ -26,13 +26,18 @@ const HomePage = () => {
 
       <Space size={25} wrap={true} className="stats-container">
 
-        <Statistic title='Total Market Cap' value={globalStats?.total_market_cap?.usd || 'No data'}/>
+        <Statistic title='Total Market Cap' precision={2} prefix='$' value={globalStats?.total_market_cap?.usd || 'No data'}/>
 
-        <Statistic title='Total 24h Volume' value={globalStats?.total_volume?.usd || 'No data'}/>
+        <Statistic title='Market Cap Percentage 24h Change' precision={2} suffix='%' value={globalStats?.market_cap_change_percentage_24h_usd || 'No data'}/>
+          
+          <Statistic title='24h Volume' prefix='$' value={globalStats?.total_volume?.usd.toLocaleString("en-US",{maximumFractionDigits: 2}) || 'No data'}/>
 
-        <Statistic title='Markets' value={globalStats?.markets || 'No data'}/>
+        <Statistic title='Dominance' value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
 
-        <Statistic title='Dominance' value={'BTC: ' + globalStats?.markets || 'No data'}/>
+        <Statistic title='Active Cryptocurrencies' value={globalStats?.active_cryptocurrencies || 'No data'}/>
+
+     
+
  
       </Space>
        
