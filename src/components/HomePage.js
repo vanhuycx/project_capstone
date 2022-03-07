@@ -24,7 +24,7 @@ const HomePage = () => {
         Global Crypto Stats
       </Title>
 
-      <Space size={25} wrap={true} className="stats-container">
+      <Space size={20} wrap={true} className="stats-container">
 
         <Statistic title='Total Market Cap' precision={2} prefix='$' value={globalStats?.total_market_cap?.usd || 'No data'}/>
 
@@ -32,11 +32,12 @@ const HomePage = () => {
           
           <Statistic title='24h Volume' prefix='$' precision={2} value={globalStats?.total_volume?.usd || 'No data'}/>
 
+          <Statistic title='Active Cryptocurrencies' value={globalStats?.active_cryptocurrencies || 'No data'}/>
+     
+
         <Statistic title='Dominance' value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
 
-        <Statistic title='Active Cryptocurrencies' value={globalStats?.active_cryptocurrencies || 'No data'}/>
-
-     
+       
 
  
       </Space>
