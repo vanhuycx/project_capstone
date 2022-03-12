@@ -35,7 +35,7 @@ code {
 }
 .header-logo {
   width: 75px;
-  margin-inline: 10px;
+  /* margin-inline: 10px; */
 }
 
 /* Make the header logo spin */
@@ -57,6 +57,7 @@ code {
 /*NavBar Style */
 .navbar {
   flex: 15%;
+  /* width: 15vw; */
   color: black;
   background-color: rgb(181, 243, 181);
 }
@@ -101,13 +102,22 @@ code {
 /* Main content */
 .main {
   flex: 85%;
+  /* width: 85vw; */
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
 .main-content {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marquee-widget {
+  padding: 0;
+  margin: 0;
+  width: 68vw;
 }
 
 .stats-container {

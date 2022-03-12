@@ -20,6 +20,13 @@ const HomePage = () => {
 
   return (
     <>
+    <div className="marquee-widget">
+
+    <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,litecoin,ripple,solana,avalanche-2,terra-luna,cardano,polkadot,link" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
+
+    </div>
+      
+
       <Title level={2}>
         Global Crypto Stats
       </Title>
