@@ -8,23 +8,19 @@ import { Link } from "react-router-dom";
 const {Title} = Typography
 
 const HomePage = () => {
-  const {data:stats,isFetching} =  useGetGlobalStatsQuery()
+  const {data:stats} =  useGetGlobalStatsQuery()
   const globalStats = stats?.data
 
   const {data:trending} = useGetTrendingQuery();
   const trendingCoins = trending?.coins
 
-  console.log(globalStats)
-
-  if (isFetching) return '...Loading'
-
   return (
     <>
-    <div className="marquee-widget">
+      <div className="marquee-widget">
 
-    <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,litecoin,ripple,solana,avalanche-2,terra-luna,cardano,polkadot,link" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
+      <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,litecoin,ripple,solana,avalanche-2,terra-luna,cardano,polkadot,link" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
 
-    </div>
+      </div>
       
 
       <Title level={2}>
@@ -74,6 +70,8 @@ const HomePage = () => {
       />
 
       <Divider/>
+
+
 
 
 

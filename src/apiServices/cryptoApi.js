@@ -16,6 +16,10 @@ export const cryptoApiCoingecko = createApi({
         getTrending: builder.query({
             query: () => ({url:'/search/trending'}),
         }),
+        getCryptos: builder.query({
+            query: ({page,per_page}) => ({url:`/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}`}),
+        }),
+
     })
 })
 
@@ -29,10 +33,7 @@ export const {
 
 
 
-           // getCryptos: builder.query({
-        //     query: ({page,per_page}) => createRequest(`/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}`),
-        // }),
-
+          
 
 
 

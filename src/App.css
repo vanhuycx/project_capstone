@@ -84,8 +84,8 @@ code {
 .menu-bars {
   display: none !important;
   position: absolute !important;
-  right: 10px !important;
-  top: 25px !important;
+  right: 0;
+  top: 25px;
 }
 
 /* Responsive layout - when the screen is less than 750px wide, make the flexbox stack on top of each other */
@@ -102,7 +102,6 @@ code {
 /* Main content */
 .main {
   flex: 85%;
-  /* width: 85vw; */
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -112,12 +111,11 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1em;
 }
 
 .marquee-widget {
-  padding: 0;
-  margin: 0;
-  width: 68vw;
+  width: 70vw;
 }
 
 .stats-container {
