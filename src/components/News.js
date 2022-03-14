@@ -6,7 +6,7 @@ const News = () => {
   const {data:news,isFetching} = useGetNewsQuery()
 
 
-    console.log(news)
+    console.log(news?.articles)
 
   
    
