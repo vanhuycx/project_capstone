@@ -1,5 +1,6 @@
-import React from "react";
-import {Typography,Card,List,Space,Statistic,Divider} from 'antd'
+import React,{useState,useEffect} from "react";
+import {Typography,Card,List,Space,Statistic,Divider,} from 'antd'
+import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import {useGetGlobalStatsQuery,useGetTrendingQuery} from '../apiServices/cryptoApi'
 import { Link } from "react-router-dom";
 
@@ -8,11 +9,23 @@ import { Link } from "react-router-dom";
 const {Title} = Typography
 
 const HomePage = () => {
+  const [marketPercentageColor, setMarketPercentageColor] = useState()
+
   const {data:stats} =  useGetGlobalStatsQuery()
   const globalStats = stats?.data
 
   const {data:trending} = useGetTrendingQuery();
   const trendingCoins = trending?.coins
+
+  useEffect(() => {
+    if (globalStats?.market_cap_change_percentage_24h_usd<0) {
+      setMarketPercentageColor('#cf1322')
+    } else {
+      setMarketPercentageColor('#3f8600')
+    }
+    
+  }, [globalStats?.market_cap_change_percentage_24h_usd])
+  
 
   return (
     <>
@@ -29,16 +42,30 @@ const HomePage = () => {
 
       <Space size={20} wrap={true} className="stats-container">
 
-        <Statistic title='Total Market Cap' precision={2} prefix='$' value={globalStats?.total_market_cap?.usd || 'No data'}/>
+        <Statistic title='Total Market Cap' precision={2} prefix='$' 
+        value={globalStats?.total_market_cap?.usd || 'No data'}/>
+  {}
+        <Statistic 
+          title='Market Cap Percentage 24h Change' 
+          precision={2} 
+          suffix='%' 
+          value={globalStats?.market_cap_change_percentage_24h_usd || 'No data'}
 
-        <Statistic title='Market Cap Percentage 24h Change' precision={2} suffix='%' value={globalStats?.market_cap_change_percentage_24h_usd || 'No data'}/>
+          valueStyle={{ color: marketPercentageColor }}
+          prefix={(globalStats?.market_cap_change_percentage_24h_usd < 0) ? <ArrowDownOutlined /> : <ArrowUpOutlined/>}
           
-          <Statistic title='24h Volume' prefix='$' precision={2} value={globalStats?.total_volume?.usd || 'No data'}/>
+          
+          />
+          
+          <Statistic title='24h Volume' prefix='$' precision={2} 
+          value={globalStats?.total_volume?.usd || 'No data'}/>
 
-          <Statistic title='Active Cryptocurrencies' value={globalStats?.active_cryptocurrencies || 'No data'}/>
+          <Statistic title='Active Cryptocurrencies' 
+          value={globalStats?.active_cryptocurrencies || 'No data'}/>
      
 
-        <Statistic title='Dominance' value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
+        <Statistic title='Dominance' 
+        value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
 
        
 
