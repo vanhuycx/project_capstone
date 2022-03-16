@@ -32,13 +32,13 @@ const Navbar = () => {
   return (
       <>
         <div className="header-container">
-          <Space>
-              <img className="header-logo" src={moon_icon} alt="" />
+          
+          <img className="header-logo" src={moon_icon} alt="" />
 
-            <div className="header-name">
-              Coin Chain
-            </div>   
-          </Space>
+          <div className="header-name">
+            Coin Chain
+          </div>   
+         
         </div>   
 
           {activeMenu 
