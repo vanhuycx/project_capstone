@@ -30,9 +30,14 @@ const HomePage = () => {
   return (
     <>
       <div className="marquee-widget">
-
-      <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,litecoin,ripple,solana,avalanche-2,terra-luna,cardano,polkadot,link" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
-
+        <coingecko-coin-price-marquee-widget 
+          coin-ids="bitcoin,ethereum,binancecoin,terra-luna,solana,
+                    cardano,polkadot,avalanche-2,dogecoin,matic-network,cosmos,
+                    near,litecoin,chainlink,tron" 
+          currency="usd" 
+          background-color="#ffffff" 
+          locale="en">
+        </coingecko-coin-price-marquee-widget>
       </div>
       
 
@@ -72,7 +77,7 @@ const HomePage = () => {
         Trending Coins
       </Title>
 
-      <List grid={{gutter:16,xs:2,sm:3,md:4,lg:5,xl:6,xxl:7}}
+      <List grid={{gutter:16,xs:1,sm:2,md:4,lg:5,xl:7,xxl:7}}
         dataSource={trendingCoins}
         renderItem={item => (
           <List.Item>

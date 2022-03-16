@@ -88,16 +88,7 @@ code {
   top: 25px;
 }
 
-/* Responsive layout - when the screen is less than 750px wide, make the flexbox stack on top of each other */
-@media screen and (max-width: 750px) {
-  .app {
-    flex-direction: column;
-  }
 
-  .menu-bars {
-    display: block !important;
-  }
-}
 
 /* Main content */
 .main {
@@ -110,12 +101,12 @@ code {
 .main-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1em;
+  /* align-items: center; */
+  /* padding: 1em; */
 }
 
 .marquee-widget {
-  width: 70vw;
+  width: 85vw;
 }
 
 .stats-container {
@@ -139,4 +130,20 @@ code {
 .footer-container {
   display: flex;
   flex-direction: column;
+}
+
+
+/* Responsive layout - when the screen is less than 1150px wide, make the flexbox stack on top of each other */
+@media screen and (max-width: 1150px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .menu-bars {
+    display: block !important;
+  }
+
+  .marquee-widget {
+    width: 100vw;
+  }
 }

@@ -19,7 +19,7 @@ const menu = (
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true)
-  const bigScreen = useMediaQuery('(min-width:750px)')
+  const bigScreen = useMediaQuery('(min-width:1150px)')
 
   useEffect(() => {
     if (bigScreen) {
