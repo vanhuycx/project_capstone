@@ -10,10 +10,13 @@ const Cryptocurrencies = () => {
 
 
   return (<>
-
+  <div className="content-wrapper">
     <h1>This is the Cryptocurrencies page</h1>
 
-      {cryptos.map(coin=><h1>{coin.current_price}</h1>)}
+      {cryptos.map(coin=><h4>{coin.current_price}</h4>)}
+  </div>
+
+   
 
   
   </>

@@ -8,13 +8,15 @@ const News = () => {
 
     console.log(news?.articles)
 
-  
-   
 
   
   if (isFetching) return '...Loading'
+
   return (
-    <h1>This is the News page</h1>
+    <div className="content-wrapper">
+      <h1>This is the News page</h1>
+    </div>
+    
   )
 }
 
