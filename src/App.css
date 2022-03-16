@@ -1,24 +1,9 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(234, 253, 231);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 * {
   box-sizing: border-box;
 }
 
 .app {
   display: flex; /*add display as flexbox*/
-
   flex-direction: row;
 }
 
@@ -57,14 +42,13 @@ code {
 /*NavBar Style */
 .navbar {
   flex: 15%;
-  /* width: 15vw; */
   color: black;
   background-color: rgb(181, 243, 181);
 }
 
 .navbar-container {
   display: flex;
-  flex-direction: column; /*  change here from row to column */
+  flex-direction: column; 
   text-align: center;
   font-size: 17px;
   background-color: rgb(181, 243, 181);
@@ -89,7 +73,6 @@ code {
 }
 
 
-
 /* Main content */
 .main {
   flex: 85%;
@@ -102,7 +85,6 @@ code {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  /* padding: 1em; */
 }
 
 .marquee-widget {
