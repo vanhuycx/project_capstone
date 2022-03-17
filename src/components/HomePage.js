@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import {Typography,Card,List,Space,Statistic,Divider,} from 'antd'
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import {useGetGlobalStatsQuery,useGetTrendingQuery} from '../apiServices/cryptoApi'
+import News from './News'
 import { Link } from "react-router-dom";
 
 
@@ -101,7 +102,7 @@ const HomePage = () => {
           Latest News
         </Title>
 
-        
+        <News/>
 
         <Divider/>
 
