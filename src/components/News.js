@@ -6,7 +6,8 @@ import {List,Card,Space} from 'antd'
 const  {Meta} = Card
 
 const News = () => {
-  const {data:news,isFetching} = useGetNewsQuery()
+  
+  const {data:news,isFetching} = useGetNewsQuery({page_size:25})
 
   const newsArticles = news?.articles
     console.log(newsArticles)
@@ -19,7 +20,7 @@ const News = () => {
 
 
     <Space>
-      <List grid={{gutter:16,xs:2,sm:2,md:4,lg:5,xl:7,xxl:7}}
+      <List grid={{gutter:16,xs:1,sm:2,md:3,lg:4,xl:5,xxl:5}}
           dataSource={newsArticles}
           renderItem={item => (
             <List.Item>

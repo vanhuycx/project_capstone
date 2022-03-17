@@ -16,7 +16,7 @@ export const newsApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl:baseUrl,}),
     endpoints: (builder)=>({
         getNews: builder.query({
-            query: () => ({url:`/search?q=crypto`,headers:headers}),
+            query: ({page_size}) => ({url:`/search?q=crypto&page_size=${page_size}`,headers:headers}),
         }),
     })
 })
