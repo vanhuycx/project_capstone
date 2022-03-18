@@ -34,8 +34,10 @@ const News = () => {
                 >
                   
                     <h2>{item?.title}</h2>
-
-                    {/* <Meta title={item?.summary || ''} /> */}
+                    <p>{item?.summary?.slice(0,100) + '...' || 'No description'}</p>
+                    
+                    
+                    
 
                     <Meta title={item?.authors || ''} description={item?.published_date} />
                           
