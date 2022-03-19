@@ -29,7 +29,7 @@ const News = () => {
                   target="_blank">
 
                 <Card hoverable 
-                      style={{width:200}}
+                      style={{width:250}}
                       cover={<img width={70} height={140} src={item?.media} alt=""/> || ''}
                 >
                   
