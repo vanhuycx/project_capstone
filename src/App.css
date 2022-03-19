@@ -99,7 +99,7 @@
 }
 
 .marquee-widget {
-  width: 85vw;
+  width: 79vw;
 }
 
 .stats-container {
@@ -128,12 +128,10 @@
   flex-direction: column;
 }
 
-
 @media screen and (max-width: 1300px) {
   .navbar-container {
     font-size: 1.075em;
   }
-
 }
 /* Responsive layout - when the screen is less than 1150px wide, make the flexbox stack on top of each other */
 @media screen and (max-width: 1150px) {
@@ -142,14 +140,13 @@
   }
   .header-container {
     flex-direction: row;
-    
   }
   .header-container div {
-    margin:0 1em 0 1em;
+    margin: 0 1em 0 1em;
   }
 
   .navbar-container {
-    min-width:15vw;
+    min-width: 15vw;
   }
 
   .menu-bars {

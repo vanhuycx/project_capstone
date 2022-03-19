@@ -79,7 +79,7 @@ const HomePage = () => {
           Trending Coins
         </Title>
 
-        <List grid={{gutter:16,xs:2,sm:2,md:4,lg:5,xl:7,xxl:7}}
+        <List grid={{gutter:16,xs:2,sm:2,md:4,lg:5,xl:5,xxl:7}}
           dataSource={trendingCoins}
           renderItem={item => (
             <List.Item>
