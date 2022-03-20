@@ -45,7 +45,7 @@ const HomePage = () => {
                         background-color="#ffffff" 
                         locale="en">
                     </coingecko-coin-price-marquee-widget>
-        </div>
+      </div>
       
 
       <div className="content-wrapper">

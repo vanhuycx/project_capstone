@@ -5,6 +5,9 @@ import {List,Card,Space} from 'antd'
 
 const  {Meta} = Card
 
+const blankImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
+
+
 const News = () => {
   
   const {data:news,isFetching} = useGetNewsQuery({page_size:25},{pollingInterval:3600000})
