@@ -26,7 +26,8 @@
   /* margin-inline: 10px; */
 }
 .header-name {
-  font-size: 2em;
+  font-size: 3em;
+  text-align: center;
 }
 
 /* Make the header logo spin */
@@ -126,6 +127,15 @@
 .footer-container {
   display: flex;
   flex-direction: column;
+}
+
+.notfound {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: xx-large;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1300px) {
