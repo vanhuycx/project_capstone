@@ -7,7 +7,7 @@ const  {Meta} = Card
 
 const News = () => {
   
-  const {data:news,isFetching} = useGetNewsQuery({page_size:25})
+  const {data:news,isFetching} = useGetNewsQuery({page_size:25},{pollingInterval:3600000})
 
   const newsArticles = news?.articles
     console.log(newsArticles)
@@ -20,7 +20,7 @@ const News = () => {
 
 
     <Space>
-      <List grid={{gutter:16,xs:1,sm:2,md:3,lg:4,xl:5,xxl:5}}
+      <List grid={{gutter:16,xs:2,sm:3,md:3,lg:4,xl:5,xxl:5}}
           dataSource={newsArticles}
           renderItem={item => (
             <List.Item>

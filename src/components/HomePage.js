@@ -12,11 +12,16 @@ const {Title} = Typography
 const HomePage = () => {
   const [marketPercentageColor, setMarketPercentageColor] = useState()
 
-  const {data:stats} =  useGetGlobalStatsQuery()
+  const {data:stats} =  useGetGlobalStatsQuery({pollingInterval:300000})
   const globalStats = stats?.data
+  var LastUpdate = new Date (globalStats?.updated_at * 1000)
 
-  const {data:trending} = useGetTrendingQuery();
+
+
+  const {data:trending} = useGetTrendingQuery({pollingInterval:300000});
   const trendingCoins = trending?.coins
+
+ 
 
   useEffect(() => {
     if (globalStats?.market_cap_change_percentage_24h_usd<0) {
@@ -70,6 +75,10 @@ const HomePage = () => {
           <Statistic title='Dominance' 
           value={('BTC: ' + globalStats?.market_cap_percentage?.btc.toLocaleString("en-US",{maximumFractionDigits: 2}) + '% - ETH: ' + globalStats?.market_cap_percentage?.eth.toLocaleString("en-US",{maximumFractionDigits: 2}) + '%') || 'No data'}/>
 
+         <Statistic title='Last time updated'
+          value={LastUpdate.toLocaleDateString() + ' ' + LastUpdate.toLocaleTimeString()}/>
+        
+        
         </Space>
         
 
