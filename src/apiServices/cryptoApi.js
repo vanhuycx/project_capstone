@@ -20,6 +20,10 @@ export const cryptoApiCoingecko = createApi({
             query: ({page,per_page}) => ({url:`/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}`}),
         }),
 
+        getExchanges: builder.query({
+            query: ({page,per_page}) => ({url:`/exchanges?&page=${page}&per_page=${per_page}`}),
+        }),
+
     })
 })
 
@@ -27,6 +31,7 @@ export const {
     useGetCryptosQuery,
     useGetGlobalStatsQuery, 
     useGetTrendingQuery,
+    useGetExchangesQuery,
 } = cryptoApiCoingecko;
 
 

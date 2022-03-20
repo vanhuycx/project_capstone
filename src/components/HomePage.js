@@ -3,6 +3,7 @@ import {Typography,Card,List,Space,Statistic,Divider,} from 'antd'
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import {useGetGlobalStatsQuery,useGetTrendingQuery} from '../apiServices/cryptoApi'
 import News from './News'
+import Cryptocurrencies from "./Cryptocurrencies";
 import { Link } from "react-router-dom";
 
 
@@ -104,6 +105,18 @@ const HomePage = () => {
             </List.Item>
           )}
         />
+
+        <Divider/>
+
+   
+
+        <Title level={2}>
+          Cryptocurrencies table
+        </Title>
+
+        <Cryptocurrencies/>
+
+
 
         <Divider/>
 
