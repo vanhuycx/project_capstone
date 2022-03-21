@@ -7,7 +7,6 @@ import Cryptocurrencies from "./Cryptocurrencies";
 import { Link } from "react-router-dom";
 
 
-
 const {Title} = Typography
 
 const HomePage = () => {
@@ -15,13 +14,14 @@ const HomePage = () => {
 
   const {data:stats} =  useGetGlobalStatsQuery({pollingInterval:300000})
   const globalStats = stats?.data
-  var LastUpdate = new Date (globalStats?.updated_at * 1000)
-
-
+ 
 
   const {data:trending} = useGetTrendingQuery({pollingInterval:300000});
   const trendingCoins = trending?.coins
 
+
+
+  var LastUpdate = new Date (globalStats?.updated_at * 1000)
  
 
   useEffect(() => {
