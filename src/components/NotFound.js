@@ -10,13 +10,14 @@ const NotFound = () => {
 
       <div>
           Sorry. We cannot find the page you want.
+          <p>Go to <Link to='/'>home page</Link></p>
       </div>
 
-      <p>Go to <Link to='/'>home page</Link></p>
+      
 
-      <div>
+      {/* <div className="notfound-image"> */}
             <img  alt='' src={BitMan} />
-      </div>
+      {/* </div> */}
 
 
     </div>
