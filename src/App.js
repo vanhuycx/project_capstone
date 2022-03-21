@@ -23,6 +23,7 @@ const App = () => {
                 <div className="main-content">
                     <Routes>
                             <Route exact path='/' element={<HomePage/>} />
+                            <Route exact path='/home' element={<HomePage/>} />
                             <Route exact path='/exchanges' element={<Exchange/>} />
                             <Route exact path='/news' element={<News/>} />
                             <Route exact path='/cryptocurrencies' element={<Cryptocurrencies/>} />
