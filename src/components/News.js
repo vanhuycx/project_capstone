@@ -36,10 +36,8 @@ const News = () => {
                       cover={<img width={70} height={140} src={item?.media} alt=""/> || ''}
                 >
                   
-                    <h2>{item?.title}</h2>
-                    <p>{item?.summary?.slice(0,100) + '...' || 'No description'}</p>
-                    
-                    
+                    <h3>{item?.title}</h3>
+                    <p>{item?.summary?.slice(0,100) + '...' || ''}</p>
                     
 
                     <Meta title={item?.authors || ''} description={item?.published_date} />
