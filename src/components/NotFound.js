@@ -5,16 +5,16 @@ import BitMan from "../image/BitMan.jpg";
 const NotFound = () => {
   return (
     <>
-      <div className="notfound">
+      <div className='notfound'>
         <div>
           Sorry. We cannot find the page you want.
           <p>
-            Go to <Link to="/">home page</Link>
+            Go to <Link to='/'>home page</Link>
           </p>
         </div>
 
         {/* <div className="notfound-image"> */}
-        <img alt="" src={BitMan} />
+        <img alt='' src={BitMan} />
         {/* </div> */}
       </div>
     </>

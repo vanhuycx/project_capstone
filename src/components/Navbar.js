@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   HomeOutlined,
   MoneyCollectOutlined,
   BulbOutlined,
   FundOutlined,
   MenuOutlined,
-} from "@ant-design/icons";
-import { Button, Space, Dropdown } from "antd";
-import moon_icon from "../moon_icon.svg";
-import { Link } from "react-router-dom";
-import useMediaQuery from "@mui/material/useMediaQuery";
+} from '@ant-design/icons';
+import { Button, Space, Dropdown } from 'antd';
+import moon_icon from '../moon_icon.svg';
+import { Link } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const menu = (
   <>
@@ -32,7 +32,7 @@ const menu = (
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
-  const bigScreen = useMediaQuery("(min-width:1150px)");
+  const bigScreen = useMediaQuery('(min-width:1150px)');
 
   useEffect(() => {
     if (bigScreen) {

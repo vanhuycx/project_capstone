@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { Typography, Card, List, Space, Statistic, Divider } from "antd";
-import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
+import React, { useState, useEffect } from 'react';
+import { Typography, Card, List, Space, Statistic, Divider } from 'antd';
+import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import {
   useGetGlobalStatsQuery,
   useGetTrendingQuery,
-} from "../apiServices/cryptoApi";
-import News from "./News";
-import Cryptocurrencies from "./Cryptocurrencies";
-import { Link } from "react-router-dom";
-import { reactHooksModule } from "@reduxjs/toolkit/dist/query/react";
+} from '../apiServices/cryptoApi';
+import News from './News';
+import Cryptocurrencies from './Cryptocurrencies';
+import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 
 const HomePage = () => {
-  const html = '<div id="some_div"></div>';
   const [marketPercentageColor, setMarketPercentageColor] = useState();
 
   const { data: stats } = useGetGlobalStatsQuery({ pollingInterval: 300000 });
@@ -26,9 +24,9 @@ const HomePage = () => {
 
   useEffect(() => {
     if (globalStats?.market_cap_change_percentage_24h_usd < 0) {
-      setMarketPercentageColor("#cf1322");
+      setMarketPercentageColor('#cf1322');
     } else {
-      setMarketPercentageColor("#3f8600");
+      setMarketPercentageColor('#3f8600');
     }
   }, [globalStats?.market_cap_change_percentage_24h_usd]);
 
@@ -53,7 +51,7 @@ const HomePage = () => {
             title='Total Market Cap'
             precision={2}
             prefix='$'
-            value={globalStats?.total_market_cap?.usd || "No data"}
+            value={globalStats?.total_market_cap?.usd || 'No data'}
           />
 
           <Statistic
@@ -61,14 +59,14 @@ const HomePage = () => {
             precision={2}
             suffix='%'
             value={
-              globalStats?.market_cap_change_percentage_24h_usd || "No data"
+              globalStats?.market_cap_change_percentage_24h_usd || 'No data'
             }
             valueStyle={{ color: marketPercentageColor }}
             prefix={
               globalStats?.market_cap_change_percentage_24h_usd < 0 ? (
                 <ArrowDownOutlined />
               ) : globalStats?.market_cap_change_percentage_24h_usd === 0 ? (
-                ""
+                ''
               ) : (
                 <ArrowUpOutlined />
               )
@@ -79,28 +77,28 @@ const HomePage = () => {
             title='24h Volume'
             prefix='$'
             precision={2}
-            value={globalStats?.total_volume?.usd || "No data"}
+            value={globalStats?.total_volume?.usd || 'No data'}
           />
 
           <Statistic
             title='Active Cryptocurrencies'
-            value={globalStats?.active_cryptocurrencies || "No data"}
+            value={globalStats?.active_cryptocurrencies || 'No data'}
           />
 
           <Statistic
             title='Dominance'
             value={
-              "BTC: " +
+              'BTC: ' +
                 globalStats?.market_cap_percentage?.btc?.toLocaleString(
-                  "en-US",
+                  'en-US',
                   { maximumFractionDigits: 2 }
                 ) +
-                "% - ETH: " +
+                '% - ETH: ' +
                 globalStats?.market_cap_percentage?.eth?.toLocaleString(
-                  "en-US",
+                  'en-US',
                   { maximumFractionDigits: 2 }
                 ) +
-                "%" || "No data"
+                '%' || 'No data'
             }
           />
 
@@ -108,7 +106,7 @@ const HomePage = () => {
             title='Last time updated'
             value={
               LastUpdate.toLocaleDateString() +
-              " " +
+              ' ' +
               LastUpdate.toLocaleTimeString()
             }
           />
@@ -126,7 +124,7 @@ const HomePage = () => {
               <Link to={`/crypto/${item?.item?.id}`}>
                 <Card>
                   <Space>
-                    {<img src={item?.item?.thumb} alt='' /> || ""}
+                    {<img src={item?.item?.thumb} alt='' /> || ''}
                     {item?.item?.name}
                   </Space>
                 </Card>

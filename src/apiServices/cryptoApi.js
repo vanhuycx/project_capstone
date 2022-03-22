@@ -1,17 +1,17 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 //For Coingecko
-const baseUrlCoingecko = "https://api.coingecko.com/api/v3";
+const baseUrlCoingecko = 'https://api.coingecko.com/api/v3';
 
 export const cryptoApiCoingecko = createApi({
-  reducerPath: "cryptoApiCoingecko",
+  reducerPath: 'cryptoApiCoingecko',
   baseQuery: fetchBaseQuery({ baseUrl: baseUrlCoingecko }),
   endpoints: (builder) => ({
     getGlobalStats: builder.query({
-      query: () => ({ url: "/global" }),
+      query: () => ({ url: '/global' }),
     }),
     getTrending: builder.query({
-      query: () => ({ url: "/search/trending" }),
+      query: () => ({ url: '/search/trending' }),
     }),
     getCryptos: builder.query({
       query: ({ page, per_page }) => ({

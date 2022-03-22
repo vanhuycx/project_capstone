@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useGetNewsQuery } from "../apiServices/newsApi";
-import { Link } from "react-router-dom";
-import { List, Card, Space } from "antd";
-
+import React, { useEffect, useState } from 'react';
+import { useGetNewsQuery } from '../apiServices/newsApi';
+import { Link } from 'react-router-dom';
+import { List, Card, Space } from 'antd';
 const { Meta } = Card;
 
 const blankImage =
-  "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
+  'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const News = () => {
   const { data: news, isFetching } = useGetNewsQuery(
@@ -17,7 +16,7 @@ const News = () => {
   const newsArticles = news?.articles;
   console.log(newsArticles);
 
-  if (isFetching) return "...Loading";
+  if (isFetching) return '...Loading';
 
   return (
     <div className='content-wrapper'>
@@ -33,14 +32,14 @@ const News = () => {
                   style={{ width: 220 }}
                   cover={
                     <img width={70} height={140} src={item?.media} alt='' /> ||
-                    ""
+                    ''
                   }
                 >
                   <h3>{item?.title}</h3>
-                  <p>{item?.summary?.slice(0, 100) + "..." || ""}</p>
+                  <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
 
                   <Meta
-                    title={item?.authors || ""}
+                    title={item?.authors || ''}
                     description={item?.published_date}
                   />
                 </Card>

@@ -1,6 +1,6 @@
-import React from "react";
-import { useGetExchangesQuery } from "../apiServices/cryptoApi";
-import { Table } from "antd";
+import React from 'react';
+import { useGetExchangesQuery } from '../apiServices/cryptoApi';
+import { Table } from 'antd';
 
 const Exchange = () => {
   const { data: exchanges, isFetching: fetchExchanges } = useGetExchangesQuery({
@@ -9,7 +9,7 @@ const Exchange = () => {
   });
   console.log(exchanges);
 
-  if (fetchExchanges) return "...Loading";
+  if (fetchExchanges) return '...Loading';
 
   const dataSource = [
     {
@@ -22,20 +22,20 @@ const Exchange = () => {
   ];
   const columns = [
     {
-      title: "Exchange Name",
-      dataIndex: "name",
+      title: 'Exchange Name',
+      dataIndex: 'name',
     },
     {
-      title: "Exchange ID",
-      dataIndex: "id",
+      title: 'Exchange ID',
+      dataIndex: 'id',
     },
     {
-      title: "Trust Score",
-      dataIndex: "trust_score",
+      title: 'Trust Score',
+      dataIndex: 'trust_score',
     },
     {
-      title: "BTC Traded in Last 24h",
-      dataIndex: "trade_volume_24h_btc",
+      title: 'BTC Traded in Last 24h',
+      dataIndex: 'trade_volume_24h_btc',
     },
   ];
   return (
@@ -45,7 +45,7 @@ const Exchange = () => {
       </div>
 
       <Table dataSource={exchanges} columns={columns}>
-        {" "}
+        {' '}
       </Table>
     </>
   );
