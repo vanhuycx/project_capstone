@@ -1,62 +1,56 @@
-import React,{useEffect,useState} from 'react'
-import { useGetNewsQuery } from "../apiServices/newsApi"
-import {Link} from 'react-router-dom'
-import {List,Card,Space} from 'antd'
+import React, { useEffect, useState } from "react";
+import { useGetNewsQuery } from "../apiServices/newsApi";
+import { Link } from "react-router-dom";
+import { List, Card, Space } from "antd";
 
-const  {Meta} = Card
+const { Meta } = Card;
 
-const blankImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
-
+const blankImage =
+  "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
 
 const News = () => {
-  
-  const {data:news,isFetching} = useGetNewsQuery({page_size:25},{pollingInterval:3600000})
+  const { data: news, isFetching } = useGetNewsQuery(
+    { page_size: 25 },
+    { pollingInterval: 3600000 }
+  );
 
-  const newsArticles = news?.articles
-    console.log(newsArticles)
+  const newsArticles = news?.articles;
+  console.log(newsArticles);
 
-
-  if (isFetching) return '...Loading'
+  if (isFetching) return "...Loading";
 
   return (
-    <div className="content-wrapper">
-
-
-    <Space>
-      <List grid={{gutter:16,xs:2,sm:3,md:3,lg:4,xl:5,xxl:5}}
+    <div className='content-wrapper'>
+      <Space>
+        <List
+          grid={{ gutter: 16, xs: 2, sm: 3, md: 3, lg: 4, xl: 5, xxl: 5 }}
           dataSource={newsArticles}
-          renderItem={item => (
+          renderItem={(item) => (
             <List.Item>
-              <a href={item?.link} 
-                  rel='noreferrer noopener'
-                  target="_blank">
-
-                <Card hoverable 
-                      style={{width:220}}
-                      cover={<img width={70} height={140} src={item?.media} alt=""/> || ''}
+              <a href={item?.link} rel='noreferrer noopener' target='_blank'>
+                <Card
+                  hoverable
+                  style={{ width: 220 }}
+                  cover={
+                    <img width={70} height={140} src={item?.media} alt='' /> ||
+                    ""
+                  }
                 >
-                  
-                    <h3>{item?.title}</h3>
-                    <p>{item?.summary?.slice(0,100) + '...' || ''}</p>
-                    
+                  <h3>{item?.title}</h3>
+                  <p>{item?.summary?.slice(0, 100) + "..." || ""}</p>
 
-                    <Meta title={item?.authors || ''} description={item?.published_date} />
-                          
-                </Card>  
-
-                  
+                  <Meta
+                    title={item?.authors || ""}
+                    description={item?.published_date}
+                  />
+                </Card>
               </a>
             </List.Item>
           )}
         />
-
-        </Space> 
-
+      </Space>
     </div>
+  );
+};
 
-    
-    
-  )
-}
-
-export default News
+export default News;
