@@ -67,9 +67,7 @@ const Cryptocurrencies = () => {
   return (
     <>
       <div className='content-wrapper'>
-        <Table dataSource={cryptos} columns={columns}>
-          {' '}
-        </Table>
+        <Table dataSource={cryptos} columns={columns} />
       </div>
     </>
   );

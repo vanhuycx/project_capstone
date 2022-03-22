@@ -44,9 +44,8 @@ const Exchange = () => {
         <h1>This is the Exchange page</h1>
       </div>
 
-      <Table dataSource={exchanges} columns={columns}>
-        {' '}
-      </Table>
+      <Table dataSource={exchanges} columns={columns} />
+      
     </>
   );
 };
