@@ -13,8 +13,10 @@ const News = () => {
     { pollingInterval: 3600000 }
   );
 
-  const newsArticles = news?.articles;
-  console.log(newsArticles);
+  const uniqueArticles = Array.from(
+    new Set(news?.articles?.map((article) => article.title))
+  ).map((title) => news?.articles.find((article) => article.title === title))
+
 
   if (isFetching) return '...Loading';
 
@@ -23,7 +25,7 @@ const News = () => {
       <Space>
         <List
           grid={{ gutter: 16, xs: 2, sm: 3, md: 3, lg: 4, xl: 5, xxl: 5 }}
-          dataSource={newsArticles}
+          dataSource={uniqueArticles}
           renderItem={(item) => (
             <List.Item>
               <a href={item?.link} rel='noreferrer noopener' target='_blank'>
