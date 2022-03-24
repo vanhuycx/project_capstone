@@ -30,16 +30,20 @@ const Cryptocurrencies = () => {
       title: 'Coin',
       dataIndex: 'name',
       sorter: (a, b) => a.name - b.name,
+      fixed: 'left',
+      width: 150,
     },
     {
-      title: 'Price (USD $)',
+      title: 'Price ($)',
       dataIndex: 'current_price',
       sorter: (a, b) => a.current_price - b.current_price,
       render: (value) =>
         value.toLocaleString('en-US', { maximumFractionDigits: 15 }),
+      width: 150,
     },
+
     {
-      title: '1h Price Change (USD $)',
+      title: '1h Price Change ($)',
       dataIndex: 'price_change_24h',
       sorter: (a, b) => a.price_change_24h - b.price_change_24h,
       render: (value) => {
@@ -86,21 +90,22 @@ const Cryptocurrencies = () => {
       render: (value) => {
         return <span>{value.toLocaleString('en-US')}</span>;
       },
+      width: 180,
+      fixed: 'right',
     },
   ];
 
   return (
     <>
-      <div className='content-wrapper'>
-        <Table
-          dataSource={cryptos}
-          columns={columns}
-          scroll={{ x: 1000, y: 500 }}
-          pagination={false}
-        />
+      <Table
+        className='crypto-table'
+        dataSource={cryptos}
+        columns={columns}
+        scroll={{ x: 1200, y: 500 }}
+        pagination={false}
+      />
 
-        <Pagination defaultCurrent={2} total={cryptosNumber} />
-      </div>
+      <Pagination defaultCurrent={2} total={cryptosNumber} />
     </>
   );
 };

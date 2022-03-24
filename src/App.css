@@ -48,7 +48,7 @@
 
 /*NavBar Style */
 .navbar {
-  flex: 15%;
+  width: 15vw;
   color: black;
   background-color: rgb(181, 243, 181);
 }
@@ -80,7 +80,9 @@
 
 /* Main content */
 .main {
-  flex: 85%;
+  /* border: 3px solid greenyellow; */
+
+  width: 85vw;
   display: flex;
   flex-direction: column;
 }
@@ -92,10 +94,11 @@
 }
 .content-wrapper {
   padding: 1em;
+  /* border: 1px solid red; */
 }
 
 .marquee-widget {
-  width: 84vw;
+  width: 85vw;
 }
 
 .stats-container {
@@ -139,6 +142,10 @@
   height: auto;
 }
 
+/* .crypto-table {
+  width: 80vw;
+} */
+
 @media screen and (max-width: 1300px) {
   .navbar-container {
     font-size: 1.075em;
@@ -159,12 +166,19 @@
     margin: 0 1em 0 1em;
   }
 
-  .navbar-container {
+  /* .navbar-container {
     min-width: 15vw;
+  } */
+
+  .navbar {
+    width: 100%;
   }
 
   .menu-bars {
     display: block !important;
+  }
+  .main {
+    width: 100%;
   }
 
   .marquee-widget {

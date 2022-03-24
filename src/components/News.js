@@ -21,7 +21,6 @@ const News = () => {
   if (isFetching) return '...Loading';
 
   return (
-    <div className='content-wrapper'>
       <Space>
         <List
           grid={{ gutter: 16, xs: 2, sm: 3, md: 3, lg: 4, xl: 5, xxl: 5 }}
@@ -50,7 +49,6 @@ const News = () => {
           )}
         />
       </Space>
-    </div>
   );
 };
 
