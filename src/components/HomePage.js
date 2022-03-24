@@ -8,16 +8,18 @@ import {
 import News from './News';
 import Cryptocurrencies from './Cryptocurrencies';
 import { Link } from 'react-router-dom';
+import Loader from '../utils/Loader'
+
 
 const { Title } = Typography;
 
 const HomePage = () => {
   const [marketPercentageColor, setMarketPercentageColor] = useState();
 
-  const { data: stats } = useGetGlobalStatsQuery({ pollingInterval: 300000 });
+  const { data: stats, isFetching: isGlobalStatFetching } = useGetGlobalStatsQuery({ pollingInterval: 300000 });
   const globalStats = stats?.data;
 
-  const { data: trending } = useGetTrendingQuery({ pollingInterval: 300000 });
+  const { data: trending,isFetching: isTrendingFetching } = useGetTrendingQuery({ pollingInterval: 300000 });
   const trendingCoins = trending?.coins;
 
   const LastUpdate = new Date(globalStats?.updated_at * 1000);
@@ -30,6 +32,10 @@ const HomePage = () => {
     }
   }, [globalStats?.market_cap_change_percentage_24h_usd]);
 
+
+
+  if (isTrendingFetching && isGlobalStatFetching) return <Loader/>
+  
   return (
     <>
       <div className='marquee-widget'>
