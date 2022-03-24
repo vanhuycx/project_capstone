@@ -21,6 +21,8 @@ const Cryptocurrencies = () => {
     { pollingInterval: 60000 }
   );
 
+  console.log(cryptos);
+
   if (fetchCryptos) return '...Loading';
 
   const columns = [
@@ -94,8 +96,7 @@ const Cryptocurrencies = () => {
           dataSource={cryptos}
           columns={columns}
           scroll={{ x: 1000, y: 500 }}
-
-          // pagination={false}
+          pagination={false}
         />
 
         <Pagination defaultCurrent={2} total={cryptosNumber} />
