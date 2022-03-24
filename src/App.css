@@ -97,9 +97,9 @@
   /* border: 1px solid red; */
 }
 
-.marquee-widget {
+/* .marquee-widget {
   width: 85vw;
-}
+} */
 
 .stats-container {
   display: flex;
@@ -142,9 +142,6 @@
   height: auto;
 }
 
-/* .crypto-table {
-  width: 80vw;
-} */
 
 @media screen and (max-width: 1300px) {
   .navbar-container {
@@ -166,10 +163,6 @@
     margin: 0 1em 0 1em;
   }
 
-  /* .navbar-container {
-    min-width: 15vw;
-  } */
-
   .navbar {
     width: 100%;
   }
@@ -181,9 +174,7 @@
     width: 100%;
   }
 
-  .marquee-widget {
-    width: 100%;
-  }
+
 
   .notfound {
     font-size: 1.5em;
