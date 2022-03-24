@@ -9,8 +9,7 @@ import Loader from '../utils/Loader';
 const Cryptocurrencies = () => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
-  
-  
+
   const { data: globalStat } = useGetGlobalStatsQuery();
   const cryptosNumber = globalStat?.data?.active_cryptocurrencies;
 
@@ -22,10 +21,7 @@ const Cryptocurrencies = () => {
     { pollingInterval: 60000 }
   );
 
-
   if (fetchCryptos) return '...Loading';
-
-
 
   const columns = [
     {
@@ -37,7 +33,8 @@ const Cryptocurrencies = () => {
       title: 'Price (USD $)',
       dataIndex: 'current_price',
       sorter: (a, b) => a.current_price - b.current_price,
-      render: (value) => value.toLocaleString('en-US', { maximumFractionDigits: 15 })
+      render: (value) =>
+        value.toLocaleString('en-US', { maximumFractionDigits: 15 }),
     },
     {
       title: '1h Price Change (USD $)',
@@ -100,12 +97,10 @@ const Cryptocurrencies = () => {
 
           // pagination={false}
         />
+
+        <Pagination defaultCurrent={2} total={cryptosNumber} />
       </div>
-
-      < Pagination defaultCurrent={2} total={cryptosNumber}/>
     </>
-
-
   );
 };
 
