@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGetExchangesQuery } from '../apiServices/cryptoApi';
-import { Table } from 'antd';
+import { Table, Pagination } from 'antd';
+import Loader from '../utils/Loader';
 
 const Exchange = () => {
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+
   const { data: exchanges, isFetching: fetchExchanges } = useGetExchangesQuery({
-    page: 1,
-    per_page: 100,
+    page: page,
+    per_page: perPage,
   });
   console.log(exchanges);
 
-  if (fetchExchanges) return '...Loading';
+  if (fetchExchanges) return <Loader />;
 
-  const dataSource = [
-    {
-      key: [0 - 99],
-      ID: exchanges.id,
-      Name: exchanges.name,
-      Trust: exchanges.trust_score,
-      Trade_Volume_24h: exchanges.trade_volume_24h_btc,
-    },
-  ];
+  // const dataSource = [
+  //   {
+  //     key: [0 - 99],
+  //     ID: exchanges.id,
+  //     Name: exchanges.name,
+  //     Trust: exchanges.trust_score,
+  //     Trade_Volume_24h: exchanges.trade_volume_24h_btc,
+  //   },
+  // ];
+
   const columns = [
     {
       title: 'Exchange Name',
@@ -40,12 +45,17 @@ const Exchange = () => {
   ];
   return (
     <>
-      <div className='content-wrapper'>
-        <h1>This is the Exchange page</h1>
-      </div>
+      <Table dataSource={exchanges} columns={columns} pagination={false} />
 
-      <Table dataSource={exchanges} columns={columns} />
-      
+      <Pagination
+        onChange={(page, pageSize) => {
+          setPage(page);
+          setPerPage(pageSize);
+        }}
+        defaultCurrent={page}
+        defaultPageSize={perPage}
+        total={100}
+      />
     </>
   );
 };

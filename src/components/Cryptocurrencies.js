@@ -93,7 +93,7 @@ const Cryptocurrencies = ({ simplified }) => {
         className='crypto-table'
         dataSource={cryptos}
         columns={columns}
-        scroll={{ x: 1200, y: 1000 }}
+        scroll={{ x: 1200, y: 650 }}
         pagination={false}
       />
 
