@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import { Table, Pagination } from 'antd';
 import Loader from '../utils/Loader';
 
-const Cryptocurrencies = () => {
+const Cryptocurrencies = ({ simplified }) => {
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(50);
+  const [perPage, setPerPage] = useState(simplified ? 10 : 50);
 
   const { data: globalStat } = useGetGlobalStatsQuery();
   const cryptosNumber = globalStat?.data?.active_cryptocurrencies;
@@ -92,7 +92,7 @@ const Cryptocurrencies = () => {
         className='crypto-table'
         dataSource={cryptos}
         columns={columns}
-        scroll={{ x: 1200, y: 500 }}
+        scroll={{ x: 1200, y: 1000 }}
         pagination={false}
       />
 

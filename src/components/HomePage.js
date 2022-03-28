@@ -143,7 +143,7 @@ const HomePage = () => {
 
         <Title level={2}>Cryptocurrencies table</Title>
 
-        <Cryptocurrencies />
+        <Cryptocurrencies simplified={true} />
 
         <Divider />
 
