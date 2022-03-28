@@ -97,9 +97,10 @@
   /* border: 1px solid red; */
 }
 
-/* .marquee-widget {
-  width: 85vw;
-} */
+.crypto-image {
+  width:25%;
+  height: auto;
+}
 
 .stats-container {
   display: flex;
