@@ -6,6 +6,7 @@ const baseUrlCoingecko = 'https://api.coingecko.com/api/v3';
 export const cryptoApiCoingecko = createApi({
   reducerPath: 'cryptoApiCoingecko',
   baseQuery: fetchBaseQuery({ baseUrl: baseUrlCoingecko }),
+  keepUnusedDataFor: 1,
   endpoints: (builder) => ({
     getGlobalStats: builder.query({
       query: () => ({ url: '/global' }),

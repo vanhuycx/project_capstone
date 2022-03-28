@@ -8,11 +8,11 @@ const { Option } = Select;
 const blankImage =
   'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
-const News = () => {
+const News = ({ simplified }) => {
   const [sortOrder, setSortOrder] = useState('latest');
 
   const { data: news, isFetching } = useGetNewsQuery(
-    { page_size: 25 },
+    { page_size: simplified ? 10 : 25 },
     { pollingInterval: 3600000 }
   );
 
@@ -25,21 +25,26 @@ const News = () => {
         ? new Date(articleB.published_date) - new Date(articleA.published_date)
         : new Date(articleA.published_date) - new Date(articleB.published_date)
     );
-  
+
   if (isFetching) return '...Loading';
 
   return (
     <>
-      Sort by:{' '}
-      <Select
-        defaultValue='latest'
-        onChange={(value) => {
-          setSortOrder(value);
-        }}
-      >
-        <Option value='latest'> Latest to Oldest Article</Option>
-        <Option value='oldest'>Oldest to Latest Article</Option>
-      </Select>
+      {!simplified && (
+        <div className='sorter'>
+          Sort by:{' '}
+          <Select
+            defaultValue='latest'
+            onChange={(value) => {
+              setSortOrder(value);
+            }}
+          >
+            <Option value='latest'> Latest to Oldest Article</Option>
+            <Option value='oldest'>Oldest to Latest Article</Option>
+          </Select>
+        </div>
+      )}
+
       <Space>
         <List
           grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }}

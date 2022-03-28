@@ -142,17 +142,23 @@ const HomePage = () => {
 
         <div className='section-title'>
           <Title level={2}>Top 10 Cryptocurrencies ranked by market cap</Title>
-          <Link className='section-link' to='/cryptocurrencies'>Show more</Link>
+          <Link className='section-link' to='/cryptocurrencies'>
+            Show more
+          </Link>
         </div>
-
 
         <Cryptocurrencies simplified={true} />
 
         <Divider />
 
-        <Title level={2}>Latest News</Title>
+        <div className='section-title'>
+          <Title level={2}>Latest News</Title>
+          <Link className='section-link' to='/news'>
+            Show more
+          </Link>
+        </div>
 
-        <News />
+        <News simplified={true} />
 
         <Divider />
       </div>
