@@ -14,13 +14,14 @@ const Cryptocurrencies = ({ simplified }) => {
   const { data: globalStat } = useGetGlobalStatsQuery();
   const cryptosNumber = globalStat?.data?.active_cryptocurrencies;
 
-  const { data: cryptos, isFetching: fetchCryptos } = useGetCryptosQuery({
-    page: page,
-    per_page: perPage,
-    pollingInterval: 6000,
-  });
+  const { data: cryptos, isFetching: fetchCryptos } = useGetCryptosQuery(
+    {
+      page: page,
+      per_page: perPage,
+    },
+    { pollingInterval: 60000 }
+  );
 
-  console.log(cryptos);
 
   if (fetchCryptos) return <Loader />;
 

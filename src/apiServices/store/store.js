@@ -7,7 +7,7 @@ const store = configureStore({
         [cryptoApiCoingecko.reducerPath]: cryptoApiCoingecko.reducer,
         [newsApi.reducerPath]: newsApi.reducer,
     },
-    // middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(cryptoApiCoingecko.middleware).concat(newsApi.middleware)
+    middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(cryptoApiCoingecko.middleware).concat(newsApi.middleware)
 })
 
 export default store
