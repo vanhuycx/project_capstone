@@ -15,15 +15,6 @@ const Exchange = () => {
 
   if (fetchExchanges) return <Loader />;
 
-  // const dataSource = [
-  //   {
-  //     key: [0 - 99],
-  //     ID: exchanges.id,
-  //     Name: exchanges.name,
-  //     Trust: exchanges.trust_score,
-  //     Trade_Volume_24h: exchanges.trade_volume_24h_btc,
-  //   },
-  // ];
 
   const columns = [
     {
