@@ -96,9 +96,15 @@
   padding: 1em;
   /* border: 1px solid red; */
 }
-
+.section-title {
+  display: flex;
+  justify-content: space-between;
+}
+.section-link {
+  font-size: large;
+}
 .crypto-image {
-  width:25%;
+  width: 25%;
   height: auto;
 }
 

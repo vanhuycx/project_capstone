@@ -14,15 +14,15 @@ const Cryptocurrencies = ({ simplified }) => {
   const { data: globalStat } = useGetGlobalStatsQuery();
   const cryptosNumber = globalStat?.data?.active_cryptocurrencies;
 
-  const { data: cryptos, isFetching: fetchCryptos } = useGetCryptosQuery(
-    {
-      page: page,
-      per_page: perPage,
-    },
-    { pollingInterval: 60000 }
-  );
+  const { data: cryptos, isFetching: fetchCryptos } = useGetCryptosQuery({
+    page: page,
+    per_page: perPage,
+    pollingInterval: 6000,
+  });
 
-  if (fetchCryptos) return '...Loading';
+  console.log(cryptos);
+
+  if (fetchCryptos) return <Loader />;
 
   const columns = [
     {
@@ -96,15 +96,17 @@ const Cryptocurrencies = ({ simplified }) => {
         pagination={false}
       />
 
-      <Pagination
-        onChange={(page, pageSize) => {
-          setPage(page);
-          setPerPage(pageSize);
-        }}
-        defaultCurrent={page}
-        defaultPageSize={perPage}
-        total={cryptosNumber}
-      />
+      {!simplified && (
+        <Pagination
+          onChange={(page, pageSize) => {
+            setPage(page);
+            setPerPage(pageSize);
+          }}
+          defaultCurrent={page}
+          defaultPageSize={perPage}
+          total={cryptosNumber}
+        />
+      )}
     </>
   );
 };

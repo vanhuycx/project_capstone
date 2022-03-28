@@ -25,8 +25,6 @@ const News = () => {
         ? new Date(articleB.published_date) - new Date(articleA.published_date)
         : new Date(articleA.published_date) - new Date(articleB.published_date)
     );
-
-  console.log(new Date(news?.articles[0]?.published_date));
   
   if (isFetching) return '...Loading';
 
