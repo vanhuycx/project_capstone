@@ -22,8 +22,6 @@ const Cryptocurrencies = () => {
     { pollingInterval: 60000 }
   );
 
-  console.log(page);
-
   if (fetchCryptos) return '...Loading';
 
   const columns = [
@@ -31,7 +29,7 @@ const Cryptocurrencies = () => {
       title: 'Coin',
       dataIndex: 'name',
       sorter: (a, b) => a.name - b.name,
-      render: (value, record, index) =>
+      render: (value, record) =>
         (
           <Link to={`/crypto/${record?.id}`}>
             <img className='crypto-image' src={record?.image} alt='' />
@@ -58,31 +56,31 @@ const Cryptocurrencies = () => {
         value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
     },
     {
-      title: '24h Volume',
+      title: '24h Volume ($)',
       dataIndex: 'total_volume',
       sorter: (a, b) => a.total_volume - b.total_volume,
       render: (value) =>
         value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
     },
     {
-      title: '24h ATL (USD $)',
+      title: '24h ATL ($)',
       dataIndex: 'low_24h',
       sorter: (a, b) => a.low_24h - b.low_24h,
       render: (value) =>
         value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
     },
     {
-      title: '24h ATH (USD $)',
+      title: '24h ATH ($)',
       dataIndex: 'high_24h',
       sorter: (a, b) => a.high_24h - b.high_24h,
       render: (value) =>
-        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '',
+        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
     },
     {
-      title: 'Mkt Cap (USD $)',
+      title: 'Mkt Cap ($)',
       dataIndex: 'market_cap',
       sorter: (a, b) => a.market_cap - b.market_cap,
-      render: (value) => value?.toLocaleString('en-US') || '',
+      render: (value) => value?.toLocaleString('en-US') || '-',
       width: 180,
       fixed: 'right',
     },
