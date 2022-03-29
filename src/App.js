@@ -5,6 +5,7 @@ import Exchange from "./components/Exchange";
 import News from "./components/News";
 import Cryptocurrencies from "./components/Cryptocurrencies";
 import CryptoDetail from "./components/CryptoDetail";
+import FearGreedIndex from "./components/FearGreedIndex";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import "./App.css";
@@ -26,6 +27,7 @@ const App = () => {
               <Route exact path="/home" element={<HomePage />} />
               <Route exact path="/exchanges" element={<Exchange />} />
               <Route exact path="/news" element={<News />} />
+              <Route exact path="/feargreed" element={<FearGreedIndex />} />
               <Route
                 exact
                 path="/cryptocurrencies"

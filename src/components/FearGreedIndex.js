@@ -7,7 +7,7 @@ const FearGreedIndex = () => {
   console.log(fearGreedIndex);
   return (
     <>
-      <div>FearGreedIndex</div>; c
+      <div>FearGreedIndex</div>
     </>
   );
 };

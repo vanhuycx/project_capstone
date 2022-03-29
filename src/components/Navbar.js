@@ -5,6 +5,7 @@ import {
   BulbOutlined,
   FundOutlined,
   MenuOutlined,
+  GlobalOutlined,
 } from '@ant-design/icons';
 import { Button, Space, Dropdown } from 'antd';
 import moon_icon from '../moon_icon.svg';
@@ -24,7 +25,10 @@ const menu = (
         <BulbOutlined /> Exchanges
       </Link>
       <Link to='/news'>
-        <FundOutlined /> News
+        <GlobalOutlined /> News
+      </Link>
+      <Link to='/feargreed'>
+        <FundOutlined /> Fear & Greed Index
       </Link>
     </div>
   </>
