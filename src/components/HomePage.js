@@ -9,7 +9,6 @@ import News from './News';
 import Cryptocurrencies from './Cryptocurrencies';
 import { Link } from 'react-router-dom';
 import Loader from '../utils/Loader';
-import { useGetFearGreedIndexQuery } from '../apiServices/fearGreedApi';
 
 const { Title } = Typography;
 
@@ -23,8 +22,6 @@ const HomePage = () => {
   const { data: trending, isFetching: isTrendingFetching } =
     useGetTrendingQuery({ pollingInterval: 300000 });
   const trendingCoins = trending?.coins;
-
-
 
   const LastUpdate = new Date(globalStats?.updated_at * 1000);
 
