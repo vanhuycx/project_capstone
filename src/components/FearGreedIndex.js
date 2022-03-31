@@ -7,7 +7,7 @@ const FearGreedIndex = () => {
   console.log(fearGreedIndex);
   return (
     <>
-      <div>FearGreedIndex</div>
+     <img style={{width:400,height:400}} src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" />
     </>
   );
 };

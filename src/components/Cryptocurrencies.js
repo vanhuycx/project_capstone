@@ -22,6 +22,7 @@ const Cryptocurrencies = ({ simplified }) => {
     { pollingInterval: 60000 }
   );
 
+  // console.log(cryptos);
 
   if (fetchCryptos) return <Loader />;
 
@@ -82,6 +83,14 @@ const Cryptocurrencies = ({ simplified }) => {
       dataIndex: 'market_cap',
       sorter: (a, b) => a.market_cap - b.market_cap,
       render: (value) => value?.toLocaleString('en-US') || '-',
+      width: 180,
+    },
+
+    {
+      title: 'Last 7 days',
+      dataIndex: '',
+      sorter: (a, b) => '',
+      render: (value) => '' || '-',
       width: 180,
       fixed: 'right',
     },
