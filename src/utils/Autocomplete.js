@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AutoComplete, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons/lib/icons';
-import { useGetAllCryptosCoingeckoQuery } from '../../apiServices/cryptoApi';
+import { useGetAllCryptosCoingeckoQuery } from '../apiServices/cryptoApi';
 
 const Autocomplete = ({ onPage, setNewsCategory }) => {
   const { data: allCryptos } = useGetAllCryptosCoingeckoQuery();
@@ -20,18 +20,17 @@ const Autocomplete = ({ onPage, setNewsCategory }) => {
   };
 
   //OnSelect
-  const history = useHistory();
+  const navigate = useNavigate();
   const onSelect = (data) => {
-
-    if (onPage === 'News') {
-      if (data !== '') {
-        setNewsCategory(data);
-      }
-    } else {
-      if (data !== '') {
-        history.push(`/crypto/${data}`);
-      }
+    // if (onPage === 'News') {
+    //   if (data !== '') {
+    //     setNewsCategory(data);
+    //   }
+    // } else {
+    if (data !== '') {
+      navigate(`/crypto/${data}`);
     }
+    // }
   };
 
   return (
@@ -42,13 +41,12 @@ const Autocomplete = ({ onPage, setNewsCategory }) => {
         allowClear
         placeholder={
           <>
-            {' '}
-            <SearchOutlined /> Search {onPage}...
+            <SearchOutlined /> Search...
           </>
         }
         style={{ width: 300 }}
       >
-        {options.map((option, i) => (
+        {options.map((option) => (
           <AutoComplete.Option key={option.id} value={option.id}>
             <Input
               type='submit'

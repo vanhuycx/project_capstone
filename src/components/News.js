@@ -12,7 +12,7 @@ const News = ({ simplified }) => {
   const [sortOrder, setSortOrder] = useState('latest');
 
   const { data: news, isFetching } = useGetNewsQuery(
-    { page_size: simplified ? 10 : 25 },
+    { page_size: simplified ? 12 : 25 },
     { pollingInterval: 3600000 }
   );
 
@@ -30,63 +30,65 @@ const News = ({ simplified }) => {
 
   return (
     <>
-      {!simplified && (
-        <div className='sorter'>
-          Sort by:{' '}
-          <Select
-            defaultValue='latest'
-            onChange={(value) => {
-              setSortOrder(value);
-            }}
-          >
-            <Option value='latest'> Latest to Oldest Article</Option>
-            <Option value='oldest'>Oldest to Latest Article</Option>
-          </Select>
-        </div>
-      )}
+      <div className='content-wrapper'>
+        {!simplified && (
+          <div className='sorter'>
+            Sort by:{' '}
+            <Select
+              defaultValue='latest'
+              onChange={(value) => {
+                setSortOrder(value);
+              }}
+            >
+              <Option value='latest'> Latest to Oldest Article</Option>
+              <Option value='oldest'>Oldest to Latest Article</Option>
+            </Select>
+          </div>
+        )}
 
-      <Space>
-        <List
-          grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }}
-          dataSource={articles}
-          renderItem={(item) => (
-            <List.Item>
-              <a href={item?.link} rel='noreferrer noopener' target='_blank'>
-                <Card
-                  className='news-card'
-                  hoverable
-                  style={{ width: 220 }}
-                  cover={
-                    item?.media ? (
-                      <img
-                        className='news-image'
-                        height={120}
-                        src={item?.media}
-                        alt=''
-                      />
-                    ) : (
-                      <img
-                        className='news-image'
-                        height={120}
-                        src={blankImage}
-                        alt=''
-                      />
-                    )
-                  }
-                >
-                  <h3>{item?.title}</h3>
-                  <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
+     
+          <List
+            grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
+            dataSource={articles}
+            renderItem={(item) => (
+              <List.Item>
+                <a href={item?.link} rel='noreferrer noopener' target='_blank'>
+                  <Card
+                    className='news-card'
+                    hoverable
+                    // style={{ width: 220 }}
+                    cover={
+                      item?.media ? (
+                        <img
+                          className='news-image'
+                          height={150}
+                          src={item?.media}
+                          alt=''
+                        />
+                      ) : (
+                        <img
+                          className='news-image'
+                          height={100}
+                          src={blankImage}
+                          alt=''
+                        />
+                      )
+                    }
+                  >
+                    <h3>{item?.title}</h3>
+                    <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
 
-                  <Meta
-                    title={item?.authors || ''}
-                    description={item?.published_date}
-                  />
-                </Card>
-              </a>
-            </List.Item>
-          )}
-        />
-      </Space>
+                    <Meta
+                      title={item?.authors || ''}
+                      description={item?.published_date}
+                    />
+                  </Card>
+                </a>
+              </List.Item>
+            )}
+          />
+    
+      </div>
     </>
   );
 };

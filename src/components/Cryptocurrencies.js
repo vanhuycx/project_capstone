@@ -6,6 +6,7 @@ import {
 import { Link } from 'react-router-dom';
 import { Table, Pagination } from 'antd';
 import Loader from '../utils/Loader';
+import Autocomplete from '../utils/Autocomplete';
 
 const Cryptocurrencies = ({ simplified }) => {
   const [page, setPage] = useState(1);
@@ -98,25 +99,29 @@ const Cryptocurrencies = ({ simplified }) => {
 
   return (
     <>
-      <Table
-        className='crypto-table'
-        dataSource={cryptos}
-        columns={columns}
-        scroll={{ x: 1200, y: 650 }}
-        pagination={false}
-      />
+      <div className='content-wrapper'>
+        {!simplified && <Autocomplete />}
 
-      {!simplified && (
-        <Pagination
-          onChange={(page, pageSize) => {
-            setPage(page);
-            setPerPage(pageSize);
-          }}
-          defaultCurrent={page}
-          defaultPageSize={perPage}
-          total={cryptosNumber}
+        <Table
+          className='crypto-table'
+          dataSource={cryptos}
+          columns={columns}
+          scroll={{ x: 1200, y: 650 }}
+          pagination={false}
         />
-      )}
+
+        {!simplified && (
+          <Pagination
+            onChange={(page, pageSize) => {
+              setPage(page);
+              setPerPage(pageSize);
+            }}
+            defaultCurrent={page}
+            defaultPageSize={perPage}
+            total={cryptosNumber}
+          />
+        )}
+      </div>
     </>
   );
 };
