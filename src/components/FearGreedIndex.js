@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useGetFearGreedIndexQuery } from '../apiServices/fearGreedApi';
 import { Line } from '@ant-design/plots';
 import { Select } from 'antd';
+import Loader from '../utils/Loader';
+
 const FearGreedIndex = () => {
   const [limit, setLimit] = useState('7');
 
-  const { data: fearGreedIndex, isSuccess } = useGetFearGreedIndexQuery({
+  const {
+    data: fearGreedIndex,
+    isFetching,
+    isSuccess,
+  } = useGetFearGreedIndexQuery({
     limit: limit,
   });
 
@@ -28,12 +34,10 @@ const FearGreedIndex = () => {
     })
   );
 
-  console.log(fearGreedData);
+  // console.log(fearGreedData);
 
   const config = {
-    // data,
     data: fearGreedData.reverse(),
-
     xField: 'timestamp',
     yField: 'value',
     point: {
@@ -60,6 +64,8 @@ const FearGreedIndex = () => {
       },
     ],
   };
+
+  if (isFetching) return <Loader />;
   return (
     <>
       <div className='content-wrapper'>
