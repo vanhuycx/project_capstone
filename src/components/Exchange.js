@@ -15,7 +15,6 @@ const Exchange = () => {
 
   if (fetchExchanges) return <Loader />;
 
-
   const columns = [
     {
       title: 'Exchange Name',
@@ -36,17 +35,19 @@ const Exchange = () => {
   ];
   return (
     <>
-      <Table dataSource={exchanges} columns={columns} pagination={false} />
+      <div className='content-wrapper'>
+        <Table dataSource={exchanges} columns={columns} pagination={false} />
 
-      <Pagination
-        onChange={(page, pageSize) => {
-          setPage(page);
-          setPerPage(pageSize);
-        }}
-        defaultCurrent={page}
-        defaultPageSize={perPage}
-        total={100}
-      />
+        <Pagination
+          onChange={(page, pageSize) => {
+            setPage(page);
+            setPerPage(pageSize);
+          }}
+          defaultCurrent={page}
+          defaultPageSize={perPage}
+          total={100}
+        />
+      </div>
     </>
   );
 };

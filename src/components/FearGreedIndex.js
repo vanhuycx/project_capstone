@@ -62,32 +62,34 @@ const FearGreedIndex = () => {
   };
   return (
     <>
-      <img
-        style={{ width: 400, height: 400 }}
-        src='https://alternative.me/crypto/fear-and-greed-index.png'
-        alt='Latest Crypto Fear & Greed Index'
-      />
+      <div className='content-wrapper'>
+        <img
+          style={{ width: 400, height: 400 }}
+          src='https://alternative.me/crypto/fear-and-greed-index.png'
+          alt='Latest Crypto Fear & Greed Index'
+        />
 
-      <h1>Crypto Fear & Greed Index Over Time</h1>
+        <h1>Crypto Fear & Greed Index Over Time</h1>
 
-      {isSuccess && (
-        <>
-          <Select
-            defaultValue={limit}
-            className='select-timeperiod'
-            placeholder='Select Time Period'
-            onChange={(value) => setLimit(value)}
-          >
-            {time?.map((day) => (
-              <Select.Option key={day[0]} value={day[1]}>
-                {day[0]}
-              </Select.Option>
-            ))}
-          </Select>
+        {isSuccess && (
+          <>
+            <Select
+              defaultValue={limit}
+              className='select-timeperiod'
+              placeholder='Select Time Period'
+              onChange={(value) => setLimit(value)}
+            >
+              {time?.map((day) => (
+                <Select.Option key={day[0]} value={day[1]}>
+                  {day[0]}
+                </Select.Option>
+              ))}
+            </Select>
 
-          <Line {...config} />
-        </>
-      )}
+            <Line {...config} />
+          </>
+        )}
+      </div>
     </>
   );
 };
