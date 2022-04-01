@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useGetFearGreedIndexQuery } from '../apiServices/fearGreedApi';
 import { Line } from '@ant-design/plots';
-
+import { Select } from 'antd';
 const FearGreedIndex = () => {
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState('7');
 
   const { data: fearGreedIndex, isSuccess } = useGetFearGreedIndexQuery({
     limit: limit,
   });
+
+  const time = [
+    ['7 days', '7'],
+    ['14 days', '14'],
+    ['30 days', '30'],
+    ['90 days', '90'],
+    ['180 days', '180'],
+    ['1 years', '365'],
+    ['3 years', '1095'],
+    ['Max', '0'],
+  ];
 
   const fearGreedData = [];
   fearGreedIndex?.data.map((data) =>
@@ -58,7 +69,25 @@ const FearGreedIndex = () => {
       />
 
       <h1>Crypto Fear & Greed Index Over Time</h1>
-      {isSuccess && <Line {...config} />}
+
+      {isSuccess && (
+        <>
+          <Select
+            defaultValue={limit}
+            className='select-timeperiod'
+            placeholder='Select Time Period'
+            onChange={(value) => setLimit(value)}
+          >
+            {time?.map((day) => (
+              <Select.Option key={day[0]} value={day[1]}>
+                {day[0]}
+              </Select.Option>
+            ))}
+          </Select>
+
+          <Line {...config} />
+        </>
+      )}
     </>
   );
 };

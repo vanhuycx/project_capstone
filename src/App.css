@@ -108,6 +108,10 @@
   height: auto;
 }
 
+.select-timeperiod {
+  width: 20%;
+}
+
 .stats-container {
   display: flex;
   justify-content: space-evenly;
