@@ -8,7 +8,7 @@ const Autocomplete = ({ onPage, setNewsCategory }) => {
   const { data: allCryptos } = useGetAllCryptosCoingeckoQuery();
   const [options, setOptions] = useState([]);
 
-  //OnSearch
+  // OnSearch
   const onSearch = (searchText) => {
     const filteredData = allCryptos?.filter(
       (coin) =>
@@ -19,7 +19,7 @@ const Autocomplete = ({ onPage, setNewsCategory }) => {
     setOptions(!searchText ? [] : filteredData);
   };
 
-  //OnSelect
+  // OnSelect
   const navigate = useNavigate();
   const onSelect = (data) => {
     // if (onPage === 'News') {
