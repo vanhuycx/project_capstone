@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Table, Pagination } from 'antd';
 import Loader from '../utils/Loader';
 import Autocomplete from '../utils/Autocomplete';
-
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 const Cryptocurrencies = ({ simplified }) => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(simplified ? 10 : 50);
@@ -23,7 +23,7 @@ const Cryptocurrencies = ({ simplified }) => {
     { pollingInterval: 60000 }
   );
 
-  // console.log(cryptos);
+  console.log(cryptos);
 
   if (fetchCryptos) return <Loader />;
 
@@ -43,6 +43,24 @@ const Cryptocurrencies = ({ simplified }) => {
       width: 150,
     },
     {
+      title: 'Symbol',
+      dataIndex: 'symbol',
+      key: 'symbol',
+      render: (item) => item?.toUpperCase() || 'Null',
+      sorter: (a, b) => {
+        if (a.symbol < b.symbol) {
+          return -1;
+        }
+        if (a.symbol > b.symbol) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
+      },
+      shouldCellUpdate: (prevRecord, nextRecord) =>
+        prevRecord.name !== nextRecord.name,
+    },
+    {
       title: 'Price ($)',
       dataIndex: 'current_price',
       sorter: (a, b) => a.current_price - b.current_price,
@@ -52,13 +70,6 @@ const Cryptocurrencies = ({ simplified }) => {
     },
 
     {
-      title: '1h Price Change ($)',
-      dataIndex: 'price_change_24h',
-      sorter: (a, b) => a.price_change_24h - b.price_change_24h,
-      render: (value) =>
-        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
-    },
-    {
       title: '24h Volume ($)',
       dataIndex: 'total_volume',
       sorter: (a, b) => a.total_volume - b.total_volume,
@@ -66,19 +77,38 @@ const Cryptocurrencies = ({ simplified }) => {
         value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
     },
     {
-      title: '24h ATL ($)',
-      dataIndex: 'low_24h',
-      sorter: (a, b) => a.low_24h - b.low_24h,
+      title: '1h Change',
+      dataIndex: 'price_change_24h',
+      sorter: (a, b) => a.price_change_24h - b.price_change_24h,
       render: (value) =>
         value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
     },
+
     {
-      title: '24h ATH ($)',
-      dataIndex: 'high_24h',
-      sorter: (a, b) => a.high_24h - b.high_24h,
-      render: (value) =>
-        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
+      title: '24h Change',
+      dataIndex: 'price_change_percentage_24h',
+      key: 'price_change_percentage_24h',
+      render: (item) =>
+        item
+          ? item?.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%'
+          : 'Null',
+      sorter: (a, b) =>
+        a.price_change_percentage_24h - b.price_change_percentage_24h,
     },
+
+    {
+      title: '7d Change',
+      dataIndex: 'price_change_percentage_7d_in_currency',
+      key: 'price_change_percentage_7d_in_currency',
+      render: (item) =>
+        item
+          ? item?.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%'
+          : 'Null',
+      sorter: (a, b) =>
+        a.price_change_percentage_7d_in_currency -
+        b.price_change_percentage_7d_in_currency,
+    },
+
     {
       title: 'Mkt Cap ($)',
       dataIndex: 'market_cap',
@@ -89,9 +119,23 @@ const Cryptocurrencies = ({ simplified }) => {
 
     {
       title: 'Last 7 days',
-      dataIndex: '',
-      sorter: (a, b) => '',
-      render: (value) => '' || '-',
+      dataIndex: ['sparkline_in_7d', 'price'],
+      render: (item, coins) => (
+        <>
+          <Sparklines data={item} height={100}>
+            <SparklinesLine
+              color={
+                coins.price_change_percentage_7d_in_currency < 0
+                  ? 'red'
+                  : 'green'
+              }
+            />
+          </Sparklines>
+        </>
+      ),
+      sorter: (a, b) =>
+        a.price_change_percentage_7d_in_currency -
+        b.price_change_percentage_7d_in_currency,
       width: 180,
       fixed: 'right',
     },

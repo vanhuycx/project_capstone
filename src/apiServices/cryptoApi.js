@@ -16,7 +16,7 @@ export const cryptoApiCoingecko = createApi({
     }),
     getCryptos: builder.query({
       query: ({ page, per_page }) => ({
-        url: `/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}&sparkline=true`,
+        url: `/coins/markets?vs_currency=usd&page=${page}&per_page=${per_page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`,
       }),
     }),
     getSpecificCrypto: builder.query({
