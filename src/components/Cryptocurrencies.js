@@ -70,22 +70,20 @@ const Cryptocurrencies = ({ simplified }) => {
     },
 
     {
-      title: '24h Volume ($)',
-      dataIndex: 'total_volume',
-      sorter: (a, b) => a.total_volume - b.total_volume,
-      render: (value) =>
-        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
-    },
-    {
-      title: '1h Change',
-      dataIndex: 'price_change_24h',
-      sorter: (a, b) => a.price_change_24h - b.price_change_24h,
-      render: (value) =>
-        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
+      title: '1h',
+      dataIndex: 'price_change_percentage_1h_in_currency',
+      key: 'price_change_percentage_1h_in_currency',
+      render: (item) =>
+        item
+          ? item?.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%'
+          : 'Null',
+      sorter: (a, b) =>
+        a.price_change_percentage_1h_in_currency -
+        b.price_change_percentage_1h_in_currency,
     },
 
     {
-      title: '24h Change',
+      title: '24h',
       dataIndex: 'price_change_percentage_24h',
       key: 'price_change_percentage_24h',
       render: (item) =>
@@ -97,7 +95,7 @@ const Cryptocurrencies = ({ simplified }) => {
     },
 
     {
-      title: '7d Change',
+      title: '7d',
       dataIndex: 'price_change_percentage_7d_in_currency',
       key: 'price_change_percentage_7d_in_currency',
       render: (item) =>
@@ -107,6 +105,15 @@ const Cryptocurrencies = ({ simplified }) => {
       sorter: (a, b) =>
         a.price_change_percentage_7d_in_currency -
         b.price_change_percentage_7d_in_currency,
+    },
+
+    {
+      title: '24h Volume ($)',
+      dataIndex: 'total_volume',
+      sorter: (a, b) => a.total_volume - b.total_volume,
+      render: (value) =>
+        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
+      width: 180,
     },
 
     {
