@@ -3,6 +3,7 @@ import { useGetNewsQuery } from '../apiServices/newsApi';
 import { Link } from 'react-router-dom';
 import { List, Card, Select } from 'antd';
 import Loader from '../utils/Loader';
+import Autocomplete from '../utils/Autocomplete';
 
 const { Meta } = Card;
 const { Option } = Select;
@@ -11,9 +12,10 @@ const blankImage =
 
 const News = ({ simplified }) => {
   const [sortOrder, setSortOrder] = useState('latest');
+  const [newsTopic, setNewsTopic] = useState('crypto');
 
   const { data: news, isFetching } = useGetNewsQuery(
-    { page_size: simplified ? 10 : 25 },
+    { page_size: simplified ? 10 : 25, topic: newsTopic },
     { pollingInterval: 3600000 }
   );
 
@@ -33,18 +35,21 @@ const News = ({ simplified }) => {
     <>
       <div className='content-wrapper'>
         {!simplified && (
-          <div className='sorter'>
-            Sort by:{' '}
-            <Select
-              defaultValue='latest'
-              onChange={(value) => {
-                setSortOrder(value);
-              }}
-            >
-              <Option value='latest'> Latest to Oldest Article</Option>
-              <Option value='oldest'>Oldest to Latest Article</Option>
-            </Select>
-          </div>
+          <>
+            <Autocomplete onPage='News' setNewsTopic={setNewsTopic} />
+            <div className='sorter'>
+              Sort by:{' '}
+              <Select
+                defaultValue='latest'
+                onChange={(value) => {
+                  setSortOrder(value);
+                }}
+              >
+                <Option value='latest'> Latest to Oldest Article</Option>
+                <Option value='oldest'>Oldest to Latest Article</Option>
+              </Select>
+            </div>
+          </>
         )}
 
         <List

@@ -4,7 +4,7 @@ import { AutoComplete, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons/lib/icons';
 import { useGetAllCryptosCoingeckoQuery } from '../apiServices/cryptoApi';
 
-const Autocomplete = ({ onPage, setNewsCategory }) => {
+const Autocomplete = ({ onPage, setNewsTopic }) => {
   const { data: allCryptos } = useGetAllCryptosCoingeckoQuery();
   const [options, setOptions] = useState([]);
 
@@ -22,15 +22,15 @@ const Autocomplete = ({ onPage, setNewsCategory }) => {
   // OnSelect
   const navigate = useNavigate();
   const onSelect = (data) => {
-    // if (onPage === 'News') {
-    //   if (data !== '') {
-    //     setNewsCategory(data);
-    //   }
-    // } else {
-    if (data !== '') {
-      navigate(`/crypto/${data}`);
+    if (onPage === 'News') {
+      if (data !== '') {
+        setNewsTopic(data);
+      }
+    } else {
+      if (data !== '') {
+        navigate(`/crypto/${data}`);
+      }
     }
-    // }
   };
 
   return (

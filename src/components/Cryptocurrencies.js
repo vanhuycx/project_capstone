@@ -61,11 +61,15 @@ const Cryptocurrencies = ({ simplified }) => {
         prevRecord.name !== nextRecord.name,
     },
     {
-      title: 'Price ($)',
+      title: 'Price',
       dataIndex: 'current_price',
       sorter: (a, b) => a.current_price - b.current_price,
       render: (value) =>
-        value?.toLocaleString('en-US', { maximumFractionDigits: 15 }) || '-',
+        value?.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 15,
+        }) || '-',
       width: 150,
     },
 
@@ -75,7 +79,9 @@ const Cryptocurrencies = ({ simplified }) => {
       key: 'price_change_percentage_1h_in_currency',
       render: (item) =>
         item
-          ? item?.toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%'
+          ? item?.toLocaleString('en-US', {
+              maximumFractionDigits: 2,
+            }) + '%'
           : 'Null',
       sorter: (a, b) =>
         a.price_change_percentage_1h_in_currency -
@@ -108,19 +114,20 @@ const Cryptocurrencies = ({ simplified }) => {
     },
 
     {
-      title: '24h Volume ($)',
+      title: '24h Volume',
       dataIndex: 'total_volume',
       sorter: (a, b) => a.total_volume - b.total_volume,
       render: (value) =>
-        value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) || '-',
+        '$' + value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) ||
+        '-',
       width: 180,
     },
 
     {
-      title: 'Mkt Cap ($)',
+      title: 'Mkt Cap',
       dataIndex: 'market_cap',
       sorter: (a, b) => a.market_cap - b.market_cap,
-      render: (value) => value?.toLocaleString('en-US') || '-',
+      render: (value) => '$' + value?.toLocaleString('en-US') || '-',
       width: 180,
     },
 
