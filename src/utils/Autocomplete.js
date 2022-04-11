@@ -26,7 +26,7 @@ const Autocomplete = ({ onPage, setNewsTopic }) => {
       if (data !== '') {
         setNewsTopic(data);
       }
-    } else {
+    } else if (onPage === 'Cryptocurrencies') {
       if (data !== '') {
         navigate(`/crypto/${data}`);
       }

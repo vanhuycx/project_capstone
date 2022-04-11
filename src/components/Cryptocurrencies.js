@@ -11,7 +11,6 @@ import { Sparklines, SparklinesLine } from 'react-sparklines';
 const Cryptocurrencies = ({ simplified }) => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(simplified ? 10 : 50);
-
   const { data: globalStat } = useGetGlobalStatsQuery();
   const cryptosNumber = globalStat?.data?.active_cryptocurrencies;
 
@@ -158,7 +157,7 @@ const Cryptocurrencies = ({ simplified }) => {
   return (
     <>
       <div className='content-wrapper'>
-        {!simplified && <Autocomplete />}
+        {!simplified && <Autocomplete onPage={'Cryptocurrencies'} />}
 
         <Table
           className='crypto-table'
