@@ -66,6 +66,7 @@ const FearGreedIndex = () => {
   };
 
   if (isFetching) return <Loader />;
+
   return (
     <>
       <div className='content-wrapper'>

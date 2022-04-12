@@ -6,8 +6,9 @@ import { useGetAllCryptosCoingeckoQuery } from '../apiServices/cryptoApi';
 
 const Autocomplete = ({ onPage, setNewsTopic }) => {
   const { data: allCryptos } = useGetAllCryptosCoingeckoQuery();
-  const [options, setOptions] = useState([]);
 
+  
+  const [options, setOptions] = useState([]);
   // OnSearch
   const onSearch = (searchText) => {
     const filteredData = allCryptos?.filter(
