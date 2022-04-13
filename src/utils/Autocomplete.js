@@ -5,9 +5,9 @@ import { SearchOutlined } from '@ant-design/icons/lib/icons';
 import { useGetAllCryptosCoingeckoQuery } from '../apiServices/cryptoApi';
 
 const Autocomplete = ({ onPage, setNewsTopic }) => {
+  
   const { data: allCryptos } = useGetAllCryptosCoingeckoQuery();
 
-  
   const [options, setOptions] = useState([]);
   // OnSearch
   const onSearch = (searchText) => {
@@ -16,7 +16,6 @@ const Autocomplete = ({ onPage, setNewsTopic }) => {
         coin.name.toLowerCase().startsWith(searchText.toLowerCase()) ||
         coin.symbol.toLowerCase().startsWith(searchText.toLowerCase())
     );
-
     setOptions(!searchText ? [] : filteredData);
   };
 

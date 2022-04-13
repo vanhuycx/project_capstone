@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGetNewsQuery } from '../apiServices/newsApi';
+import { useGetGoogleNewsQuery } from '../apiServices/googleNewsApi';
 import { Link } from 'react-router-dom';
 import { List, Card, Select } from 'antd';
 import Loader from '../utils/Loader';
@@ -18,7 +19,9 @@ const News = ({ simplified }) => {
     { page_size: simplified ? 10 : 25, topic: newsTopic },
     { pollingInterval: 3600000 }
   );
+  const { data: googleNews } = useGetGoogleNewsQuery({ searchTerm: newsTopic });
 
+  console.log(googleNews);
   const articles = Array.from(
     new Set(news?.articles?.map((article) => article.title))
   )
