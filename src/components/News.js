@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGetNewsQuery } from '../apiServices/newsApi';
 import { useGetGoogleNewsQuery } from '../apiServices/googleNewsApi';
-import { Link } from 'react-router-dom';
 import { List, Card, Select } from 'antd';
 import Loader from '../utils/Loader';
 import Autocomplete from '../utils/Autocomplete';
@@ -15,13 +14,15 @@ const News = ({ simplified }) => {
   const [sortOrder, setSortOrder] = useState('latest');
   const [newsTopic, setNewsTopic] = useState('crypto');
 
-  const { data: news, isFetching } = useGetNewsQuery(
+  const { data: news, isFetching: isFreeNewsFetching } = useGetNewsQuery(
     { page_size: simplified ? 10 : 25, topic: newsTopic },
     { pollingInterval: 3600000 }
   );
-  const { data: googleNews } = useGetGoogleNewsQuery({ searchTerm: newsTopic });
+  const { data: googleNews, isFetching: isGoogleNewsFetching } =
+    useGetGoogleNewsQuery({ searchTerm: newsTopic });
 
   console.log(googleNews);
+
   const articles = Array.from(
     new Set(news?.articles?.map((article) => article.title))
   )
@@ -32,7 +33,7 @@ const News = ({ simplified }) => {
         : new Date(articleA.published_date) - new Date(articleB.published_date)
     );
 
-  if (isFetching) return <Loader />;
+  if (isFreeNewsFetching && isGoogleNewsFetching) return <Loader />;
 
   return (
     <>
