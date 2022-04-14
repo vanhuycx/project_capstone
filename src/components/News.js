@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useGetNewsQuery } from '../apiServices/newsApi';
 import { useGetGoogleNewsQuery } from '../apiServices/googleNewsApi';
-import { List, Card, Select } from 'antd';
+import { List, Card, Select, Typography, Carousel } from 'antd';
 import Loader from '../utils/Loader';
 import Autocomplete from '../utils/Autocomplete';
 
 const { Meta } = Card;
 const { Option } = Select;
+const { Title } = Typography;
 const blankImage =
   'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
+
+const contentStyle = {
+  height: '160px',
+  color: '#fff',
+  lineHeight: '160px',
+  textAlign: 'center',
+  background: '#364d79',
+};
 
 const News = ({ simplified }) => {
   const [sortOrder, setSortOrder] = useState('latest');
@@ -19,7 +28,10 @@ const News = ({ simplified }) => {
     { pollingInterval: 3600000 }
   );
   const { data: googleNews, isFetching: isGoogleNewsFetching } =
-    useGetGoogleNewsQuery({ searchTerm: newsTopic });
+    useGetGoogleNewsQuery(
+      { searchTerm: newsTopic },
+      { pollingInterval: 3600000 }
+    );
 
   console.log(googleNews);
 
@@ -95,6 +107,22 @@ const News = ({ simplified }) => {
             </List.Item>
           )}
         />
+
+        <Title level={2}>Other News</Title>
+        
+
+
+        {/* <Carousel autoplay>
+          {googleNews?.map((news) => (
+            <div>
+              <h3 style={contentStyle}>
+                <a href={news.link} rel='noreferrer noopener' target='_blank'>
+                  {news.title}
+                </a>
+              </h3>
+            </div>
+          ))}
+        </Carousel> */}
       </div>
     </>
   );
