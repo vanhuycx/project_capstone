@@ -12,9 +12,8 @@ const blankImage =
   'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const contentStyle = {
-  height: '160px',
+  width: '700px',
   color: '#fff',
-  lineHeight: '160px',
   textAlign: 'center',
   background: '#364d79',
 };
@@ -109,8 +108,42 @@ const News = ({ simplified }) => {
         />
 
         <Title level={2}>Other News</Title>
-        
 
+        <Carousel autoplay style={contentStyle}>
+          {articles?.map((item) => (
+            <a href={item?.link} rel='noreferrer noopener' target='_blank'>
+              <Card
+                className='news-card'
+                hoverable
+                cover={
+                  item?.media ? (
+                    <img
+                      className='news-image'
+                      height={150}
+                      src={item?.media}
+                      alt=''
+                    />
+                  ) : (
+                    <img
+                      className='news-image'
+                      height={100}
+                      src={blankImage}
+                      alt=''
+                    />
+                  )
+                }
+              >
+                <h3>{item?.title}</h3>
+                <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
+
+                <Meta
+                  title={item?.authors || ''}
+                  description={item?.published_date}
+                />
+              </Card>
+            </a>
+          ))}
+        </Carousel>
 
         {/* <Carousel autoplay>
           {googleNews?.map((news) => (
