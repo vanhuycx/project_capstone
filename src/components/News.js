@@ -67,6 +67,46 @@ const News = ({ simplified }) => {
           </>
         )}
 
+        <Title level={2}>Headlines</Title>
+
+        <Carousel autoplay style={contentStyle}>
+          {articles?.map((item) => (
+            <a href={item?.link} rel='noreferrer noopener' target='_blank'>
+              <Card
+                className='news-card'
+                hoverable
+                cover={
+                  item?.media ? (
+                    <img
+                      className='news-image'
+                      height={150}
+                      src={item?.media}
+                      alt=''
+                    />
+                  ) : (
+                    <img
+                      className='news-image'
+                      height={100}
+                      src={blankImage}
+                      alt=''
+                    />
+                  )
+                }
+              >
+                <h3>{item?.title}</h3>
+                <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
+
+                <Meta
+                  title={item?.authors || ''}
+                  description={item?.published_date}
+                />
+              </Card>
+            </a>
+          ))}
+        </Carousel>
+
+        <Title level={2}>Lastest News</Title>
+
         <List
           grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }}
           dataSource={articles}
@@ -106,44 +146,6 @@ const News = ({ simplified }) => {
             </List.Item>
           )}
         />
-
-        <Title level={2}>Other News</Title>
-
-        <Carousel autoplay style={contentStyle}>
-          {articles?.map((item) => (
-            <a href={item?.link} rel='noreferrer noopener' target='_blank'>
-              <Card
-                className='news-card'
-                hoverable
-                cover={
-                  item?.media ? (
-                    <img
-                      className='news-image'
-                      height={150}
-                      src={item?.media}
-                      alt=''
-                    />
-                  ) : (
-                    <img
-                      className='news-image'
-                      height={100}
-                      src={blankImage}
-                      alt=''
-                    />
-                  )
-                }
-              >
-                <h3>{item?.title}</h3>
-                <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
-
-                <Meta
-                  title={item?.authors || ''}
-                  description={item?.published_date}
-                />
-              </Card>
-            </a>
-          ))}
-        </Carousel>
 
         {/* <Carousel autoplay>
           {googleNews?.map((news) => (
