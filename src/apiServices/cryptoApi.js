@@ -21,7 +21,7 @@ export const cryptoApiCoingecko = createApi({
     }),
     getSpecificCrypto: builder.query({
       query: ({ cryptoId }) => ({
-        url: `/coins/${cryptoId}`,
+        url: `/coins/${cryptoId}&sparkline=true`,
       }),
     }),
     getAllCryptosCoingecko: builder.query({
