@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useGetNewsQuery } from '../apiServices/newsApi';
 import { useGetGoogleNewsQuery } from '../apiServices/googleNewsApi';
-import { List, Card, Select, Typography, Carousel } from 'antd';
+import { List, Card, Select, Typography, Carousel, Divider } from 'antd';
 import Loader from '../utils/Loader';
 import Autocomplete from '../utils/Autocomplete';
 
@@ -51,6 +51,46 @@ const News = ({ simplified }) => {
       <div className='content-wrapper'>
         {!simplified && (
           <>
+            <Title level={2}>Useful Articles</Title>
+
+            <Carousel autoplay style={contentStyle}>
+              {articles?.map((item) => (
+                <a href={item?.link} rel='noreferrer noopener' target='_blank'>
+                  <Card
+                    className='news-card'
+                    hoverable
+                    cover={
+                      item?.media ? (
+                        <img
+                          className='news-image'
+                          height={150}
+                          src={item?.media}
+                          alt=''
+                        />
+                      ) : (
+                        <img
+                          className='news-image'
+                          height={100}
+                          src={blankImage}
+                          alt=''
+                        />
+                      )
+                    }
+                  >
+                    <h3>{item?.title}</h3>
+                    <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
+
+                    <Meta
+                      title={item?.authors || ''}
+                      description={item?.published_date}
+                    />
+                  </Card>
+                </a>
+              ))}
+            </Carousel>
+
+            <Divider />
+
             <Autocomplete onPage='News' setNewsTopic={setNewsTopic} />
             <div className='sorter'>
               Sort by:{' '}
@@ -64,50 +104,29 @@ const News = ({ simplified }) => {
                 <Option value='oldest'>Oldest to Latest Article</Option>
               </Select>
             </div>
+
+            <Title level={2}>Headlines</Title>
           </>
         )}
 
-        <Title level={2}>Headlines</Title>
-
-        <Carousel autoplay style={contentStyle}>
-          {articles?.map((item) => (
-            <a href={item?.link} rel='noreferrer noopener' target='_blank'>
-              <Card
-                className='news-card'
-                hoverable
-                cover={
-                  item?.media ? (
-                    <img
-                      className='news-image'
-                      height={150}
-                      src={item?.media}
-                      alt=''
-                    />
-                  ) : (
-                    <img
-                      className='news-image'
-                      height={100}
-                      src={blankImage}
-                      alt=''
-                    />
-                  )
-                }
-              >
-                <h3>{item?.title}</h3>
-                <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
-
-                <Meta
-                  title={item?.authors || ''}
-                  description={item?.published_date}
-                />
-              </Card>
-            </a>
-          ))}
-        </Carousel>
-
-        <Title level={2}>Lastest News</Title>
-
         <List
+          size='large'
+          dataSource={googleNews}
+          renderItem={(item) => (
+            <List.Item>
+              <a
+                style={{ color: 'black' }}
+                href={item.link}
+                rel='noreferrer noopener'
+                target='_blank'
+              >
+                {item.title}
+              </a>
+            </List.Item>
+          )}
+        />
+
+        {/* <List
           grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }}
           dataSource={articles}
           renderItem={(item) => (
@@ -145,7 +164,7 @@ const News = ({ simplified }) => {
               </a>
             </List.Item>
           )}
-        />
+        /> */}
 
         {/* <Carousel autoplay>
           {googleNews?.map((news) => (
