@@ -109,6 +109,15 @@
   width: 25%;
   height: auto;
 }
+.coin-general {
+  display: flex;
+  justify-content: space-between;
+}
+.coin-graph {
+  width: 100%;
+  /* flex: 100%; */
+  /* border: #022730 1px solid; */
+}
 
 .select-timeperiod {
   width: 20%;

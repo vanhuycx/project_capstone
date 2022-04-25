@@ -1,5 +1,7 @@
 import { useParams } from 'react-router';
 import React, { useState } from 'react';
+import HTMLReactParser from 'html-react-parser';
+
 import {
   useGetSpecificCryptoQuery,
   useGetCryptoHistoryQuery,
@@ -18,7 +20,7 @@ const CryptoDetail = () => {
     cryptoId: cryptoId?.cryptoId,
   });
 
-  const { data: cryptoHistory, isSuccess } = useGetCryptoHistoryQuery(
+  const { data: cryptoHistory } = useGetCryptoHistoryQuery(
     { cryptoId: cryptoId?.cryptoId, timePeriod: timePeriod },
     { pollingInterval: 60000 }
   );
@@ -104,7 +106,7 @@ const CryptoDetail = () => {
           )} */}
         </Row>
 
-        {isSuccess && (
+        <div className='coin-general'>
           <div className='coin-graph'>
             <Title className='coin-chart-heading' level={3}>
               {' '}
@@ -126,102 +128,115 @@ const CryptoDetail = () => {
 
             <LineChart cryptoHistory={cryptoHistory} />
           </div>
-        )}
 
-        <div className='card-stats'>
-          <Card
-            title={coin?.name + ' Price Statistics'}
-            style={{ width: 250, backgroundColor: '#f2f2f2' }}
-          >
-            <Statistic
-              title={coin?.name + ' Price'}
-              value={coin?.market_data?.current_price?.usd || 'No data'}
-              prefix='$'
-              valueStyle={{ fontSize: 18 }}
-            />
-            <br></br>
-            <Statistic
-              title='Market Cap'
-              value={coin?.market_data?.market_cap?.usd || 'No data'}
-              prefix='$'
-              valueStyle={{ fontSize: 18 }}
-            />
-            <br></br>
-            <Statistic
-              title='Trading Volume'
-              value={coin?.market_data?.total_volume?.usd || 'No data'}
-              prefix='$'
-              valueStyle={{ fontSize: 18 }}
-            />
-            <br></br>
-            <Statistic
-              title='24h Low / 24h High'
-              value={
-                coin?.market_data?.low_24h?.usd +
-                ' ' +
-                '/' +
-                ' ' +
-                '$' +
-                coin?.market_data?.high_24h?.usd
-              }
-              prefix='$'
-              valueStyle={{ fontSize: 18 }}
-            />
+          <div className='card-stats'>
+            <Card
+              title={coin?.name + ' Price Statistics'}
+              style={{ width: 250, backgroundColor: '#f2f2f2' }}
+            >
+              <Statistic
+                title={coin?.name + ' Price'}
+                value={coin?.market_data?.current_price?.usd || 'No data'}
+                prefix='$'
+                valueStyle={{ fontSize: 18 }}
+              />
+              <br></br>
+              <Statistic
+                title='Market Cap'
+                value={coin?.market_data?.market_cap?.usd || 'No data'}
+                prefix='$'
+                valueStyle={{ fontSize: 18 }}
+              />
+              <br></br>
+              <Statistic
+                title='Trading Volume'
+                value={coin?.market_data?.total_volume?.usd || 'No data'}
+                prefix='$'
+                valueStyle={{ fontSize: 18 }}
+              />
+              <br></br>
+              <Statistic
+                title='24h Low / 24h High'
+                value={
+                  coin?.market_data?.low_24h?.usd +
+                  ' ' +
+                  '/' +
+                  ' ' +
+                  '$' +
+                  coin?.market_data?.high_24h?.usd
+                }
+                prefix='$'
+                valueStyle={{ fontSize: 18 }}
+              />
 
-            <br></br>
+              <br></br>
 
-            <Statistic
-              title='Market Cap Rank'
-              value={coin?.market_cap_rank}
-              prefix='#'
-              valueStyle={{ fontSize: 18 }}
-            />
+              <Statistic
+                title='Market Cap Rank'
+                value={coin?.market_cap_rank}
+                prefix='#'
+                valueStyle={{ fontSize: 18 }}
+              />
 
-            <br></br>
-            <Statistic
-              title='All-Time High'
-              value={coin?.market_data?.ath?.usd}
-              prefix='$'
-              valueStyle={{ fontSize: 18 }}
-            />
+              <br></br>
+              <Statistic
+                title='All-Time High'
+                value={coin?.market_data?.ath?.usd}
+                prefix='$'
+                valueStyle={{ fontSize: 18 }}
+              />
 
-            <Statistic
-              value={coin?.market_data?.ath_change_percentage?.usd}
-              precision={1}
-              suffix='%'
-              valueStyle={{ color: '#cf1322', fontSize: 14 }}
-            />
+              <Statistic
+                value={coin?.market_data?.ath_change_percentage?.usd}
+                precision={1}
+                suffix='%'
+                valueStyle={{ color: '#cf1322', fontSize: 14 }}
+              />
 
-            <Statistic
-              value={new Date(
-                coin?.market_data?.ath_date?.usd
-              )?.toLocaleDateString()}
-              valueStyle={{ fontSize: 15 }}
-            />
+              <Statistic
+                value={new Date(
+                  coin?.market_data?.ath_date?.usd
+                )?.toLocaleDateString()}
+                valueStyle={{ fontSize: 15 }}
+              />
 
-            <br></br>
-            <Statistic
-              title='All-Time Low'
-              value={coin?.market_data?.atl?.usd}
-              prefix='$'
-              valueStyle={{ fontSize: 18 }}
-            />
+              <br></br>
+              <Statistic
+                title='All-Time Low'
+                value={coin?.market_data?.atl?.usd}
+                prefix='$'
+                valueStyle={{ fontSize: 18 }}
+              />
 
-            <Statistic
-              value={coin?.market_data?.atl_change_percentage?.usd}
-              precision={1}
-              suffix='%'
-              valueStyle={{ color: '#3f8600', fontSize: 14 }}
-            />
+              <Statistic
+                value={coin?.market_data?.atl_change_percentage?.usd}
+                precision={1}
+                suffix='%'
+                valueStyle={{ color: '#3f8600', fontSize: 14 }}
+              />
 
-            <Statistic
-              value={new Date(
-                coin?.market_data?.atl_date?.usd
-              )?.toLocaleDateString()}
-              valueStyle={{ fontSize: 15 }}
-            />
-          </Card>
+              <Statistic
+                value={new Date(
+                  coin?.market_data?.atl_date?.usd
+                )?.toLocaleDateString()}
+                valueStyle={{ fontSize: 15 }}
+              />
+            </Card>
+          </div>
         </div>
+
+        {/* Description */}
+
+        <Col className='coin-desc-link'>
+          {/* <Row className="coin-desc"> */}
+          <Title level={3} className='coin-details-heading'>
+            What is {coin?.name}?
+          </Title>
+          {coin?.description?.en
+            ? HTMLReactParser(coin?.description?.en)
+            : 'No Description'}
+          {/* </Row> */}
+        </Col>
       </div>
     </>
   );
