@@ -6,6 +6,7 @@ import {
 } from '../apiServices/cryptoApi';
 import Loader from '../utils/Loader';
 import { Statistic, Space, Row, Col, Card, Select, Typography } from 'antd';
+import LineChart from '../utils/LineChart';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -121,6 +122,8 @@ const CryptoDetail = () => {
               </Option>
             ))}
           </Select>
+
+          <LineChart coinHistory={cryptoHistory} />
         </div>
 
         <div className='card-stats'>
