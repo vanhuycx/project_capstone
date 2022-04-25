@@ -72,6 +72,30 @@ const CryptoDetail = () => {
               prefix='$'
             />
           </Col>
+
+          <Col span={12}>
+            <Statistic
+              title='fully diluted valuation:'
+              value={
+                coin?.market_data?.fully_diluted_valuation?.usd || 'No data'
+              }
+              prefix='$'
+            />
+          </Col>
+
+          {coin?.links?.blockchain_site[0] && (
+            <a href={coin?.links?.blockchain_site[0]}>Block Chain Site</a>
+          )}
+
+          <Col span={12}>
+            <Statistic
+              title='fully diluted valuation:'
+              value={
+                coin?.market_data?.fully_diluted_valuation?.usd || 'No data'
+              }
+              prefix='$'
+            />
+          </Col>
         </Row>
       </div>
     </>
