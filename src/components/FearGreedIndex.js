@@ -34,7 +34,7 @@ const FearGreedIndex = () => {
     })
   );
 
-  // console.log(fearGreedData);
+  console.log(fearGreedData);
 
   const config = {
     data: fearGreedData.reverse(),

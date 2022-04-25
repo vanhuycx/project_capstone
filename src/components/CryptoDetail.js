@@ -5,9 +5,11 @@ import {
   useGetCryptoHistoryQuery,
 } from '../apiServices/cryptoApi';
 import Loader from '../utils/Loader';
-import { Statistic, Space, Row, Col, Card ,Select} from 'antd';
+import { Statistic, Space, Row, Col, Card, Select, Typography } from 'antd';
 
-const {Option} = Select;
+const { Title, Text } = Typography;
+const { Option } = Select;
+
 const CryptoDetail = () => {
   const cryptoId = useParams();
   const [timePeriod, setTimePeriod] = useState('1');
@@ -22,7 +24,18 @@ const CryptoDetail = () => {
 
   console.log(cryptoHistory);
 
-  const time = [['1d','1'], ['7d','7'],['14d','14'],['30d','30'],['90d','90'],['180d','180'],['1y','365'],['3y','1095'],['5y','1825'],['max','max']];
+  const time = [
+    ['1d', '1'],
+    ['7d', '7'],
+    ['14d', '14'],
+    ['30d', '30'],
+    ['90d', '90'],
+    ['180d', '180'],
+    ['1y', '365'],
+    ['3y', '1095'],
+    ['5y', '1825'],
+    ['max', 'max'],
+  ];
 
   if (isFetching) return <Loader />;
   return (
@@ -90,7 +103,25 @@ const CryptoDetail = () => {
           )} */}
         </Row>
 
-        <div className='coin-graph'></div>
+        <div className='coin-graph'>
+          <Title className='coin-chart-heading' level={3}>
+            {' '}
+            {coin?.name} price chart in day(s)
+          </Title>
+
+          <Select
+            defaultValue={timePeriod}
+            className='select-timeperiod'
+            placeholder='Select Time Period'
+            onChange={(value) => setTimePeriod(value)}
+          >
+            {time?.map((day) => (
+              <Option key={day[0]} value={day[1]}>
+                {day[0]}
+              </Option>
+            ))}
+          </Select>
+        </div>
 
         <div className='card-stats'>
           <Card
