@@ -18,7 +18,7 @@ const CryptoDetail = () => {
     cryptoId: cryptoId?.cryptoId,
   });
 
-  const { data: cryptoHistory } = useGetCryptoHistoryQuery(
+  const { data: cryptoHistory, isSuccess } = useGetCryptoHistoryQuery(
     { cryptoId: cryptoId?.cryptoId, timePeriod: timePeriod },
     { pollingInterval: 60000 }
   );
@@ -104,27 +104,29 @@ const CryptoDetail = () => {
           )} */}
         </Row>
 
-        <div className='coin-graph'>
-          <Title className='coin-chart-heading' level={3}>
-            {' '}
-            {coin?.name} price chart in day(s)
-          </Title>
+        {isSuccess && (
+          <div className='coin-graph'>
+            <Title className='coin-chart-heading' level={3}>
+              {' '}
+              {coin?.name} price chart in day(s)
+            </Title>
 
-          <Select
-            defaultValue={timePeriod}
-            className='select-timeperiod'
-            placeholder='Select Time Period'
-            onChange={(value) => setTimePeriod(value)}
-          >
-            {time?.map((day) => (
-              <Option key={day[0]} value={day[1]}>
-                {day[0]}
-              </Option>
-            ))}
-          </Select>
+            <Select
+              defaultValue={timePeriod}
+              className='select-timeperiod'
+              placeholder='Select Time Period'
+              onChange={(value) => setTimePeriod(value)}
+            >
+              {time?.map((day) => (
+                <Option key={day[0]} value={day[1]}>
+                  {day[0]}
+                </Option>
+              ))}
+            </Select>
 
-          <LineChart coinHistory={cryptoHistory} />
-        </div>
+            <LineChart cryptoHistory={cryptoHistory} />
+          </div>
+        )}
 
         <div className='card-stats'>
           <Card
