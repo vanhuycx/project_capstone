@@ -1,16 +1,28 @@
 import { useParams } from 'react-router';
-import React from 'react';
-import { useGetSpecificCryptoQuery } from '../apiServices/cryptoApi';
+import React, { useState } from 'react';
+import {
+  useGetSpecificCryptoQuery,
+  useGetCryptoHistoryQuery,
+} from '../apiServices/cryptoApi';
 import Loader from '../utils/Loader';
-import { Statistic, Space, Row, Col, Card } from 'antd';
+import { Statistic, Space, Row, Col, Card ,Select} from 'antd';
 
+const {Option} = Select;
 const CryptoDetail = () => {
   const cryptoId = useParams();
+  const [timePeriod, setTimePeriod] = useState('1');
   const { data: coin, isFetching } = useGetSpecificCryptoQuery({
     cryptoId: cryptoId?.cryptoId,
   });
 
-  console.log(coin);
+  const { data: cryptoHistory } = useGetCryptoHistoryQuery(
+    { cryptoId: cryptoId?.cryptoId, timePeriod: timePeriod },
+    { pollingInterval: 60000 }
+  );
+
+  console.log(cryptoHistory);
+
+  const time = [['1d','1'], ['7d','7'],['14d','14'],['30d','30'],['90d','90'],['180d','180'],['1y','365'],['3y','1095'],['5y','1825'],['max','max']];
 
   if (isFetching) return <Loader />;
   return (
@@ -77,6 +89,8 @@ const CryptoDetail = () => {
             <a href={coin?.links?.blockchain_site[0]}>Block Chain Site</a>
           )} */}
         </Row>
+
+        <div className='coin-graph'></div>
 
         <div className='card-stats'>
           <Card

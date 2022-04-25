@@ -24,6 +24,11 @@ export const cryptoApiCoingecko = createApi({
         url: `/coins/${cryptoId}?sparkline=true`,
       }),
     }),
+    getCryptoHistory: builder.query({
+      query: ({ timePeriod, cryptoId }) => ({
+        url: `/coins/${cryptoId}/market_chart?days=${timePeriod}&vs_currency=usd`,
+      }),
+    }),
     getAllCryptosCoingecko: builder.query({
       query: () => ({ url: '/coins/list' }),
     }),
@@ -39,8 +44,9 @@ export const cryptoApiCoingecko = createApi({
 export const {
   useGetCryptosQuery,
   useGetSpecificCryptoQuery,
+  useGetCryptoHistoryQuery,
   useGetAllCryptosCoingeckoQuery,
   useGetGlobalStatsQuery,
   useGetTrendingQuery,
-  useGetExchangesQuery,
+  useGetExchangesQuery
 } = cryptoApiCoingecko;
