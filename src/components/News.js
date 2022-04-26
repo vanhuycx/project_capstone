@@ -34,7 +34,7 @@ const News = ({ simplified }) => {
 
   console.log(googleNews);
 
-  const articles = Array.from(
+  const freeNewsArticles = Array.from(
     new Set(news?.articles?.map((article) => article.title))
   )
     .map((title) => news?.articles.find((article) => article.title === title))
@@ -55,7 +55,7 @@ const News = ({ simplified }) => {
             <Title level={2}>Useful Articles</Title>
 
             <Carousel autoplay style={contentStyle}>
-              {articles?.map((item) => (
+              {freeNewsArticles?.map((item) => (
                 <a href={item?.link} rel='noreferrer noopener' target='_blank'>
                   <Card
                     className='news-card'
