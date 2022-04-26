@@ -32,18 +32,18 @@ const News = ({ simplified }) => {
       { pollingInterval: 3600000 }
     );
 
-  console.log(googleNews);
-
   const freeNewsArticles = Array.from(
     new Set(news?.articles?.map((article) => article.title))
-  )
-    .map((title) => news?.articles.find((article) => article.title === title))
+  ).map((title) => news?.articles.find((article) => article.title === title));
 
+  let googleNewsArticles = googleNews
+    ?.slice()
     .sort((articleA, articleB) =>
       sortOrder === 'latest'
-        ? new Date(articleB.published_date) - new Date(articleA.published_date)
-        : new Date(articleA.published_date) - new Date(articleB.published_date)
+        ? new Date(articleB.publish_date) - new Date(articleA.publish_date)
+        : new Date(articleA.publish_date) - new Date(articleB.publish_date)
     );
+  console.log(googleNewsArticles);
 
   if (isFreeNewsFetching && isGoogleNewsFetching) return <Loader />;
 
@@ -112,7 +112,7 @@ const News = ({ simplified }) => {
 
         <List
           size='large'
-          dataSource={googleNews}
+          dataSource={googleNewsArticles}
           renderItem={(item, index) => (
             <List.Item key={index}>
               <List.Item.Meta
