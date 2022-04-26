@@ -38,6 +38,7 @@ const News = ({ simplified }) => {
     new Set(news?.articles?.map((article) => article.title))
   )
     .map((title) => news?.articles.find((article) => article.title === title))
+
     .sort((articleA, articleB) =>
       sortOrder === 'latest'
         ? new Date(articleB.published_date) - new Date(articleA.published_date)
@@ -112,16 +113,22 @@ const News = ({ simplified }) => {
         <List
           size='large'
           dataSource={googleNews}
-          renderItem={(item) => (
-            <List.Item>
-              <a
-                style={{ color: 'black' }}
-                href={item.link}
-                rel='noreferrer noopener'
-                target='_blank'
-              >
-                {item.title}
-              </a>
+          renderItem={(item, index) => (
+            <List.Item key={index}>
+              <List.Item.Meta
+                // avatar={<Avatar src={item.picture.large} />}
+                title={
+                  <a
+                    href={item?.link}
+                    rel='noreferrer noopener'
+                    target='_blank'
+                  >
+                    {item?.title}
+                  </a>
+                }
+                description={item?.source || ''}
+              />
+              <div>{item?.publish_date}</div>
             </List.Item>
           )}
         />
