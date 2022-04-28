@@ -43,7 +43,7 @@ const News = ({ simplified }) => {
         ? new Date(articleB.publish_date) - new Date(articleA.publish_date)
         : new Date(articleA.publish_date) - new Date(articleB.publish_date)
     );
-  console.log(googleNewsArticles);
+  // console.log(googleNewsArticles);
 
   if (isFreeNewsFetching && isGoogleNewsFetching) return <Loader />;
 
