@@ -5,6 +5,7 @@ import { List, Card, Select, Typography, Carousel, Divider } from 'antd';
 import Loader from '../utils/Loader';
 import Autocomplete from '../utils/Autocomplete';
 
+
 const { Meta } = Card;
 const { Option } = Select;
 const { Title } = Typography;
