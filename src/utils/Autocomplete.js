@@ -20,10 +20,10 @@ const Autocomplete = ({ onPage, setNewsTopic }) => {
           )
         : onPage === 'News' &&
           newsTopic?.filter(
-            (topic) => topic.toLowerCase().startsWith(searchText.toLowerCase())
-            // ||
-            // topic.toLowerCase().contains(searchText.toLowerCase())
-          );
+            (topic) =>
+              topic.toLowerCase().startsWith(searchText.toLowerCase()) ||
+              topic.toLowerCase().includes(searchText.toLowerCase())
+          );  
     setOptions(!searchText ? [] : filteredData);
   };
 

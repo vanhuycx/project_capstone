@@ -23,7 +23,7 @@ const News = ({ simplified }) => {
   const [newsTopic, setNewsTopic] = useState('crypto');
 
   const { data: news, isFetching: isFreeNewsFetching } = useGetNewsQuery(
-    { page_size: simplified ? 10 : 25, topic: newsTopic },
+    { page_size: simplified ? 10 : 25, topic: 'crypto' },
     { pollingInterval: 3600000 }
   );
   const { data: googleNews, isFetching: isGoogleNewsFetching } =
