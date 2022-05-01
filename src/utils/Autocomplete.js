@@ -3,19 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import { AutoComplete, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons/lib/icons';
 import { useGetAllCryptosCoingeckoQuery } from '../apiServices/cryptoApi';
+import newsTopic from './newsTopic';
 
 const Autocomplete = ({ onPage, setNewsTopic }) => {
-  
   const { data: allCryptos } = useGetAllCryptosCoingeckoQuery();
 
   const [options, setOptions] = useState([]);
   // OnSearch
   const onSearch = (searchText) => {
-    const filteredData = allCryptos?.filter(
-      (coin) =>
-        coin.name.toLowerCase().startsWith(searchText.toLowerCase()) ||
-        coin.symbol.toLowerCase().startsWith(searchText.toLowerCase())
-    );
+    const filteredData =
+      onPage === 'Cryptocurrencies'
+        ? allCryptos?.filter(
+            (coin) =>
+              coin.name.toLowerCase().startsWith(searchText.toLowerCase()) ||
+              coin.symbol.toLowerCase().startsWith(searchText.toLowerCase())
+          )
+        : onPage === 'News' &&
+          newsTopic?.filter(
+            (topic) => topic.toLowerCase().startsWith(searchText.toLowerCase())
+            // ||
+            // topic.toLowerCase().contains(searchText.toLowerCase())
+          );
     setOptions(!searchText ? [] : filteredData);
   };
 
@@ -46,15 +54,21 @@ const Autocomplete = ({ onPage, setNewsTopic }) => {
         }
         style={{ width: 300 }}
       >
-        {options.map((option) => (
-          <AutoComplete.Option key={option.id} value={option.id}>
-            <Input
-              type='submit'
-              bordered={false}
-              value={option.name + ' (' + option.symbol.toUpperCase() + ')'}
-            />
-          </AutoComplete.Option>
-        ))}
+        {options.map((option, index) =>
+          option?.id ? (
+            <AutoComplete.Option key={option.id} value={option.id}>
+              <Input
+                type='submit'
+                bordered={false}
+                value={option.name + ' (' + option.symbol.toUpperCase() + ')'}
+              />
+            </AutoComplete.Option>
+          ) : (
+            <AutoComplete.Option key={index} value={option}>
+              <Input type='submit' bordered={false} value={option} />
+            </AutoComplete.Option>
+          )
+        )}
       </AutoComplete>
     </>
   );
