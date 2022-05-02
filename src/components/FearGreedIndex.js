@@ -3,10 +3,10 @@ import { useGetFearGreedIndexQuery } from '../apiServices/fearGreedApi';
 import { Line } from '@ant-design/plots';
 import { Select } from 'antd';
 import Loader from '../utils/Loader';
-import credential from '../utils/secret';
+// import credential from '../utils/secret';
 
 const FearGreedIndex = () => {
-  console.log(credential);
+  // console.log(credential);
   const [limit, setLimit] = useState('7');
 
   const {
