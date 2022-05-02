@@ -23,7 +23,7 @@ const Autocomplete = ({ onPage, setNewsTopic }) => {
             (topic) =>
               topic.toLowerCase().startsWith(searchText.toLowerCase()) ||
               topic.toLowerCase().includes(searchText.toLowerCase())
-          );  
+          );
     setOptions(!searchText ? [] : filteredData);
   };
 
@@ -32,7 +32,7 @@ const Autocomplete = ({ onPage, setNewsTopic }) => {
   const onSelect = (data) => {
     if (onPage === 'News') {
       if (data !== '') {
-        setNewsTopic(data);
+        setNewsTopic(data.replace(/ /g, '%20'));
       }
     } else if (onPage === 'Cryptocurrencies') {
       if (data !== '') {

@@ -5,7 +5,6 @@ import { List, Card, Select, Typography, Carousel, Divider } from 'antd';
 import Loader from '../utils/Loader';
 import Autocomplete from '../utils/Autocomplete';
 
-
 const { Meta } = Card;
 const { Option } = Select;
 const { Title } = Typography;
@@ -44,7 +43,7 @@ const News = ({ simplified }) => {
         ? new Date(articleB.publish_date) - new Date(articleA.publish_date)
         : new Date(articleA.publish_date) - new Date(articleB.publish_date)
     );
-  // console.log(googleNewsArticles);
+  // console.log(newsTopic);
 
   if (isFreeNewsFetching && isGoogleNewsFetching) return <Loader />;
 

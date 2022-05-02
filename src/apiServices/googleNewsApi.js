@@ -12,6 +12,6 @@ export const googleNewsApi = createApi({
       }),
     }),
   }),
-});
+}); 
 
 export const { useGetGoogleNewsQuery } = googleNewsApi;
