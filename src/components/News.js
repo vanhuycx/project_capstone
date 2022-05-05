@@ -145,7 +145,11 @@ const News = ({ simplified }) => {
                 }
                 description={item?.source || ''}
               />
-              <div>{item?.publish_date}</div>
+              <div>
+                {new Date(item?.publish_date).toLocaleDateString() +
+                  ' ' +
+                  new Date(item?.publish_date).toLocaleTimeString()}
+              </div>
             </List.Item>
           )}
         />
