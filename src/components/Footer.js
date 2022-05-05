@@ -6,12 +6,23 @@ import emailjs from '@emailjs/browser';
 const Footer = () => {
   const form = useRef();
 
-  const openNotification = (placement, type) => {
-    notification[type]({
-      message: 'Notification',
-      description: 'Your email has been sent successfully.',
-      placement,
-    });
+  const openNotification = (placement, type, text) => {
+    if (type === 'success') {
+      notification[type]({
+        message: 'Notification',
+        description: 'Your email has been sent successfully. (' + text + ')',
+        placement,
+      });
+    } else if (type === 'error') {
+      notification[type]({
+        message: 'Error',
+        description:
+          'There is an error. Please try again or come back later. (' +
+          text +
+          ')',
+        placement,
+      });
+    }
   };
 
   const sendEmail = (e) => {
@@ -26,11 +37,12 @@ const Footer = () => {
       )
       .then(
         (response) => {
-          console.log('SUCCESS!', response.status, response.text);
-          openNotification('bottomRight', 'success');
+          // console.log('SUCCESS!', response.status, response.text);
+          openNotification('bottomRight', 'success', response.text);
         },
         (error) => {
           console.log(error.text);
+          openNotification('bottomRight', 'error', error.text);
         }
       );
     form.current.reset();
