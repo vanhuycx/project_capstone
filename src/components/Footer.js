@@ -19,10 +19,27 @@ const Footer = () => {
           privacy policy.
         </p>
         <p>
-          {' '}
           Copyright &copy; {new Date().getFullYear()} CoinChain All Rights
           Reserved
         </p>
+
+        <h1>Contact Us</h1>
+
+        <div className='container'>
+          <form ref={form} onSubmit={sendEmail}>
+            <label>Name</label>
+            <input type='text' name='user_name' placeholder='Your name...' />
+
+            <label>Email</label>
+            <br></br>
+            <input type='email' name='user_email' placeholder='Your email...' />
+
+            <br></br>
+            <label>Message</label>
+            <textarea name='user_message' placeholder='Your message...' />
+            <input type='submit' value='Submit' />
+          </form>
+        </div>
       </div>
     </>
   );

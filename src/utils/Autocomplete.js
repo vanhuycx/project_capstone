@@ -7,8 +7,8 @@ import newsTopic from './newsTopic';
 
 const Autocomplete = ({ onPage, setNewsTopic }) => {
   const { data: allCryptos } = useGetAllCryptosCoingeckoQuery();
-
   const [options, setOptions] = useState([]);
+
   // OnSearch
   const onSearch = (searchText) => {
     const filteredData =
