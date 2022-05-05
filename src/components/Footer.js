@@ -10,10 +10,10 @@ const Footer = () => {
 
     emailjs
       .sendForm(
-        'service_fg238fj',
-        'template_a69idfa',
+        'service_mribwqj',
+        'template_6ch0dap',
         form.current,
-        '79UeZVyL0qp4iSTTP'
+        'Ffhwi0ZGsVyJhIFKD'
       )
       .then(
         (response) => {
@@ -47,7 +47,7 @@ const Footer = () => {
 
             <br></br>
             <label>Message</label>
-            <textarea name='user_message' placeholder='Your message...' />
+            <textarea name='message' placeholder='Your message...' />
             <input type='submit' value='Submit' />
           </form>
         </div>
