@@ -20,15 +20,18 @@ const contentStyle = {
 
 const News = ({ simplified }) => {
   const [sortOrder, setSortOrder] = useState('latest');
-  const [newsTopic, setNewsTopic] = useState('crypto');
+  const [newsTopic, setNewsTopic] = useState('cryptocurrency');
+  const [timeRange, setTimeRange] = useState(simplified ? '1h' : '30d');
+
+  const timeList = ['1h', '6h', '12h', '24h', '3d', '7d', '15d', '30d'];
 
   const { data: news, isFetching: isFreeNewsFetching } = useGetNewsQuery(
-    { page_size: simplified ? 10 : 25, topic: 'crypto' },
+    { page_size: simplified ? 10 : 25, topic: 'cryptocurrency' },
     { pollingInterval: 3600000 }
   );
   const { data: googleNews, isFetching: isGoogleNewsFetching } =
     useGetGoogleNewsQuery(
-      { searchTerm: newsTopic },
+      { searchTerm: newsTopic, timeRange: timeRange },
       { pollingInterval: 3600000 }
     );
 
@@ -103,6 +106,20 @@ const News = ({ simplified }) => {
               >
                 <Option value='latest'> Latest to Oldest Article</Option>
                 <Option value='oldest'>Oldest to Latest Article</Option>
+              </Select>
+            </div>
+
+            <div className='sorter'>
+              Time range:{' '}
+              <Select
+                defaultValue='30d'
+                onChange={(value) => {
+                  setTimeRange(value);
+                }}
+              >
+                {timeList.map((time) => (
+                  <Option value={time}>{time}</Option>
+                ))}
               </Select>
             </div>
 

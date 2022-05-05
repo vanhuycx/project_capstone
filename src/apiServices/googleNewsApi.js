@@ -7,8 +7,8 @@ export const googleNewsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   endpoints: (builder) => ({
     getGoogleNews: builder.query({
-      query: ({ searchTerm }) => ({
-        url: `/search?q=${searchTerm}`,
+      query: ({ searchTerm,timeRange }) => ({
+        url: `/search?q=${searchTerm}&time_range=${timeRange}`,
       }),
     }),
   }),

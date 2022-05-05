@@ -169,7 +169,7 @@
   color: black;
 }
 
-input[type='text'],
+.contact-container input[type='text'],
 input[type='email'],
 textarea {
   width: 100%;
@@ -182,7 +182,7 @@ textarea {
   color: black;
 }
 
-input[type='submit'] {
+.contact-container input[type='submit'] {
   width: 100%;
   background-color: #4caf50;
   color: white;
@@ -193,7 +193,7 @@ input[type='submit'] {
   cursor: pointer;
 }
 
-input[type='submit']:hover {
+.contact-container input[type='submit']:hover {
   background-color: #45a049;
 }
 
