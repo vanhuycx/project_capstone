@@ -1,9 +1,18 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { notification } from 'antd';
 import emailjs from '@emailjs/browser';
 
 const Footer = () => {
   const form = useRef();
+
+  const openNotification = (placement, type) => {
+    notification[type]({
+      message: 'Notification',
+      description: 'Your email has been sent successfully.',
+      placement,
+    });
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -18,6 +27,7 @@ const Footer = () => {
       .then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
+          openNotification('bottomRight', 'success');
         },
         (error) => {
           console.log(error.text);
@@ -39,15 +49,25 @@ const Footer = () => {
           <h1>Contact Us</h1>
           <form ref={form} onSubmit={sendEmail}>
             <label>Name</label>
-            <input type='text' name='user_name' placeholder='Your name...' />
+            <input
+              required
+              type='text'
+              name='user_name'
+              placeholder='Your name...'
+            />
 
             <label>Email</label>
             <br></br>
-            <input type='email' name='user_email' placeholder='Your email...' />
+            <input
+              required
+              type='email'
+              name='user_email'
+              placeholder='Your email...'
+            />
 
             <br></br>
             <label>Message</label>
-            <textarea name='message' placeholder='Your message...' />
+            <textarea required name='message' placeholder='Your message...' />
             <input type='submit' value='Submit' />
           </form>
         </div>
