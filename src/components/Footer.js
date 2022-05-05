@@ -37,11 +37,9 @@ const Footer = () => {
       )
       .then(
         (response) => {
-          // console.log('SUCCESS!', response.status, response.text);
           openNotification('bottomRight', 'success', response.text);
         },
         (error) => {
-          console.log(error.text);
           openNotification('bottomRight', 'error', error.text);
         }
       );
