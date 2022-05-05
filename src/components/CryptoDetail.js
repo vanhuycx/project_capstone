@@ -25,7 +25,7 @@ const CryptoDetail = () => {
     { pollingInterval: 60000 }
   );
 
-  console.log(cryptoHistory);
+  // console.log(cryptoHistory);
 
   const time = [
     ['1d', '1'],

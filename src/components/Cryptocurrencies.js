@@ -22,7 +22,7 @@ const Cryptocurrencies = ({ simplified }) => {
     { pollingInterval: 60000 }
   );
 
-  console.log(cryptos);
+  // console.log(cryptos);
 
   if (fetchCryptos) return <Loader />;
 
