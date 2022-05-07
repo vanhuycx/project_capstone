@@ -10,6 +10,7 @@ const newsTopic = [
   'DeFi',
   'DApps',
   'Digital Gold',
+  'Crypto Fear & Greed Index',
   'HODL',
   'Initial Coin Offering',
   'NFT',
