@@ -12,7 +12,8 @@ const blankImage =
   'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const contentStyle = {
-  width: '700px',
+  // width: '700px',
+  height: '350px',
   color: '#fff',
   textAlign: 'center',
   background: '#364d79',
@@ -85,7 +86,7 @@ const News = ({ simplified }) => {
                     <p>{item?.summary?.slice(0, 100) + '...' || ''}</p>
 
                     <Meta
-                      title={item?.authors || ''}
+                      // title={item?.authors || ''}
                       description={item?.published_date}
                     />
                   </Card>
