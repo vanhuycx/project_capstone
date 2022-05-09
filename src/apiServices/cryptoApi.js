@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
 //For Coingecko
 const baseUrlCoingecko = 'https://api.coingecko.com/api/v3';
 

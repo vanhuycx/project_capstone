@@ -117,8 +117,11 @@ const Cryptocurrencies = ({ simplified }) => {
       dataIndex: 'total_volume',
       sorter: (a, b) => a.total_volume - b.total_volume,
       render: (value) =>
-        '$' + value?.toLocaleString('en-US', { maximumFractionDigits: 10 }) ||
-        '-',
+        value?.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 10,
+        }) || '-',
       width: 180,
     },
 
@@ -126,7 +129,12 @@ const Cryptocurrencies = ({ simplified }) => {
       title: 'Mkt Cap',
       dataIndex: 'market_cap',
       sorter: (a, b) => a.market_cap - b.market_cap,
-      render: (value) => '$' + value?.toLocaleString('en-US') || '-',
+      render: (value) =>
+        value?.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 10,
+        }) || '-',
       width: 180,
     },
 
