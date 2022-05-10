@@ -30,7 +30,18 @@ const Cryptocurrencies = ({ simplified }) => {
     {
       title: 'Coin',
       dataIndex: 'name',
-      sorter: (a, b) => a.name - b.name,
+      sorter: (a, b) => {
+        const lowerCaseNameA = a.name.toLowerCase();
+        const lowerCaseNameB = b.name.toLowerCase();
+        if (lowerCaseNameA < lowerCaseNameB) {
+          return -1;
+        }
+        if (lowerCaseNameA > lowerCaseNameB) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
+      },
       render: (value, record) =>
         (
           <Link to={`/crypto/${record?.id}`}>
