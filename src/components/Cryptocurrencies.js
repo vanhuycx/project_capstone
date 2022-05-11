@@ -8,6 +8,7 @@ import { Table, Pagination } from 'antd';
 import Loader from '../utils/Loader';
 import Autocomplete from '../utils/Autocomplete';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
+
 const Cryptocurrencies = ({ simplified }) => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(simplified ? 10 : 50);
