@@ -193,6 +193,7 @@ const Cryptocurrencies = ({ simplified }) => {
               setPage(page);
               setPerPage(pageSize);
             }}
+            showQuickJumper
             defaultCurrent={page}
             defaultPageSize={perPage}
             total={cryptosNumber}
