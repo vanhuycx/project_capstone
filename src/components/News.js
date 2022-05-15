@@ -24,7 +24,7 @@ const News = ({ simplified }) => {
   const [newsTopic, setNewsTopic] = useState('cryptocurrency');
   const [timeRange, setTimeRange] = useState(simplified ? '1h' : '30d');
 
-  const timeList = ['1h', '6h', '12h', '24h', '3d', '7d', '15d', '30d'];
+  const timeList = ['1h', '12h', '24h', '3d', '7d', '15d', '30d'];
 
   const { data: news, isFetching: isFreeNewsFetching } = useGetNewsQuery(
     { page_size: simplified ? 10 : 25, topic: 'cryptocurrency' },

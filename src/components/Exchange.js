@@ -11,7 +11,6 @@ const Exchange = () => {
     page: page,
     per_page: perPage,
   });
-  // console.log(exchanges);
 
   if (fetchExchanges) return <Loader />;
 
